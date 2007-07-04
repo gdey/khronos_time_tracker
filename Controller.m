@@ -1401,7 +1401,7 @@
     
     [addJobClient setStringValue:@""];
     [addJobJobName setStringValue:@""];
-    [addJobHourlyRate setStringValue:@""];  // TODO: we should set this based on some default $(cstuart 2007-07-03)
+    [addJobHourlyRate setStringValue:@""];  // TODO: we could set this based on some default $(cstuart 2007-07-03)
 }
 
 - (IBAction)addJobSave:(id)sender
@@ -2571,7 +2571,7 @@
 
 - (IBAction)menuCheckForUpdates:(id)sender
 {
-    NSString *versionString = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://khronos.enure.net/"]];
+    NSString *versionString = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://khronos.enure.net/version.html"]]; // FIXME: This isn't working $(cstuart)
     if ([versionString length] < 1 || [versionString length] > 5)
     {
         NSRunAlertPanel([textArr stringValue], [textProblemConnect stringValue], @"OK", nil, nil);

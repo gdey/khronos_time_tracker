@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		40A773630C3B884100DFFD02 /* showSessions2.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A773620C3B884100DFFD02 /* showSessions2.png */; };
 		8B05E99305D9A18A00228C57 /* khronos.icns in Resources */ = {isa = PBXBuildFile; fileRef = 8B05E99205D9A18A00228C57 /* khronos.icns */; };
 		8B1E334A05D8993C000E3A53 /* edit.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8B1E334105D8993C000E3A53 /* edit.gif */; };
 		8B1E334B05D8993C000E3A53 /* minus.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8B1E334205D8993C000E3A53 /* minus.gif */; };
@@ -52,6 +53,7 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* Khronos_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Khronos_Prefix.pch; sourceTree = "<group>"; };
+		40A773620C3B884100DFFD02 /* showSessions2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = showSessions2.png; path = Graphics/showSessions2.png; sourceTree = "<group>"; };
 		8B05E99205D9A18A00228C57 /* khronos.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = khronos.icns; sourceTree = "<group>"; };
 		8B1E334105D8993C000E3A53 /* edit.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = edit.gif; path = Graphics/edit.gif; sourceTree = "<group>"; };
 		8B1E334205D8993C000E3A53 /* minus.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = minus.gif; path = Graphics/minus.gif; sourceTree = "<group>"; };
@@ -83,7 +85,7 @@
 		8BEBC03305DAA11100534DBC /* tableGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tableGenerator.m; sourceTree = "<group>"; };
 		8BEC38CA05D9512D00533678 /* prefs.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = prefs.txt; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* Khronos.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Khronos.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* Khronos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Khronos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +206,7 @@
 				8B1E334205D8993C000E3A53 /* minus.gif */,
 				8B1E334305D8993C000E3A53 /* plus.gif */,
 				8B1E334405D8993C000E3A53 /* showSessions.gif */,
+				40A773620C3B884100DFFD02 /* showSessions2.png */,
 			);
 			name = Graphics;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				8BE4262605E0BE750019708C /* MBjobSelector3.png in Resources */,
 				8BD4F72D05E20112003ECE09 /* MBjobSelector3Alt.png in Resources */,
 				8B5F2DCB05E33CF600501878 /* stst_nullPauseMB.png in Resources */,
+				40A773630C3B884100DFFD02 /* showSessions2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
