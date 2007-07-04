@@ -258,9 +258,7 @@
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
-								<string>8B1E332A05D8992F000E3A53</string>
 								<string>1C37FBAC04509CD000000102</string>
-								<string>4025AF310C3B669F005541E1</string>
 								<string>1C37FAAC04509CD000000102</string>
 								<string>1C37FABC05509CD000000102</string>
 								<string>1CC0EA4004350EF90041110B</string>
@@ -268,10 +266,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
+									<integer>23</integer>
 									<integer>22</integer>
-									<integer>5</integer>
-									<integer>3</integer>
-									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
@@ -294,7 +290,7 @@
 							<real>279</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>47 307 881 571 0 0 1440 878 </string>
+						<string>61 185 881 571 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -331,7 +327,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {580, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>47 307 881 571 0 0 1440 878 </string>
+								<string>61 185 881 571 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -351,7 +347,7 @@
 								<key>Frame</key>
 								<string>{{0, 5}, {580, 525}}</string>
 								<key>RubberWindowFrame</key>
-								<string>47 307 881 571 0 0 1440 878 </string>
+								<string>61 185 881 571 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -375,9 +371,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>4025AF0C0C3B63EC005541E1</string>
+				<string>40A773090C3B7D5200DFFD02</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>4025AF0D0C3B63EC005541E1</string>
+				<string>40A7730A0C3B7D5200DFFD02</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -511,13 +507,11 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C530D57069F1CE1000CFCEE</string>
-		<string>40458E230C3B465700DB1FB9</string>
 		<string>1C0AD2B3069F1EA900FABCE6</string>
-		<string>/Developer/Projects/Khronos/Khronos_1.2/Khronos.xcodeproj</string>
+		<string>/Users/cs/Cocoa/googlecode/khronos--time-tracker/Khronos.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>47 307 881 571 0 0 1440 878 </string>
+	<string>61 185 881 571 0 0 1440 878 </string>
 	<key>WindowTools</key>
 	<array>
 		<dict>
@@ -538,7 +532,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>main.m</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -555,8 +549,6 @@
 							<string>295pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -596,7 +588,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>40458E230C3B465700DB1FB9</string>
-				<string>4025AF140C3B650A005541E1</string>
+				<string>4025AF6C0C3B7B6E005541E1</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -958,9 +950,9 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C0AD2B3069F1EA900FABCE6</string>
-				<string>4025AF0E0C3B63EC005541E1</string>
+				<string>40A7730B0C3B7D5200DFFD02</string>
 				<string>1CD0528B0623707200166675</string>
-				<string>4025AF0F0C3B63EC005541E1</string>
+				<string>40A7730C0C3B7D5200DFFD02</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.run</string>
