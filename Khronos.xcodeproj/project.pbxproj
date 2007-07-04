@@ -1,0 +1,470 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8B05E99305D9A18A00228C57 /* khronos.icns in Resources */ = {isa = PBXBuildFile; fileRef = 8B05E99205D9A18A00228C57 /* khronos.icns */; };
+		8B1E334A05D8993C000E3A53 /* edit.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8B1E334105D8993C000E3A53 /* edit.gif */; };
+		8B1E334B05D8993C000E3A53 /* minus.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8B1E334205D8993C000E3A53 /* minus.gif */; };
+		8B1E334C05D8993C000E3A53 /* plus.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8B1E334305D8993C000E3A53 /* plus.gif */; };
+		8B1E334D05D8993C000E3A53 /* showSessions.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8B1E334405D8993C000E3A53 /* showSessions.gif */; };
+		8B217FC805DC64CF008C95F4 /* jobActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B217FC505DC64CF008C95F4 /* jobActive.png */; };
+		8B217FC905DC64CF008C95F4 /* jobInactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B217FC605DC64CF008C95F4 /* jobInactive.png */; };
+		8B217FCA05DC64CF008C95F4 /* jobPause.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B217FC705DC64CF008C95F4 /* jobPause.png */; };
+		8B5A777405DC6F9D003BD710 /* stst_pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B5A777005DC6F9D003BD710 /* stst_pause.png */; };
+		8B5A777505DC6F9D003BD710 /* stst_pause2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B5A777105DC6F9D003BD710 /* stst_pause2.png */; };
+		8B5A777605DC6F9D003BD710 /* stst_start.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B5A777205DC6F9D003BD710 /* stst_start.png */; };
+		8B5A777705DC6F9D003BD710 /* stst_stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B5A777305DC6F9D003BD710 /* stst_stop.png */; };
+		8B5A77B705DC7172003BD710 /* stst_null.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B5A77B605DC7172003BD710 /* stst_null.png */; };
+		8B5F2DCB05E33CF600501878 /* stst_nullPauseMB.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B5F2DCA05E33CF600501878 /* stst_nullPauseMB.png */; };
+		8B8C911A05DAFB7200B25096 /* cuDateTime.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8C911805DAFB7200B25096 /* cuDateTime.h */; };
+		8B8C911B05DAFB7200B25096 /* cuDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8C911905DAFB7200B25096 /* cuDateTime.m */; };
+		8BC18A4B05DDB1B100C152EB /* stst_nullMB.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC18A4605DDB1B100C152EB /* stst_nullMB.png */; };
+		8BC18A4C05DDB1B100C152EB /* stst_pause2MB.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC18A4705DDB1B100C152EB /* stst_pause2MB.png */; };
+		8BC18A4D05DDB1B100C152EB /* stst_playMB.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC18A4805DDB1B100C152EB /* stst_playMB.png */; };
+		8BC18A4E05DDB1B100C152EB /* stst_startMB.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC18A4905DDB1B100C152EB /* stst_startMB.png */; };
+		8BC18A4F05DDB1B100C152EB /* stst_stopMB.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC18A4A05DDB1B100C152EB /* stst_stopMB.png */; };
+		8BC21A8905D881FF001C2B42 /* Controller.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BC21A8705D881FF001C2B42 /* Controller.h */; };
+		8BC21A8A05D881FF001C2B42 /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC21A8805D881FF001C2B42 /* Controller.m */; };
+		8BC4A7EF05DBF1630022CDB4 /* dataHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BC4A7ED05DBF1630022CDB4 /* dataHandler.h */; };
+		8BC4A7F005DBF1630022CDB4 /* dataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4A7EE05DBF1630022CDB4 /* dataHandler.m */; };
+		8BD4F72D05E20112003ECE09 /* MBjobSelector3Alt.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BD4F72C05E20112003ECE09 /* MBjobSelector3Alt.png */; };
+		8BE4262605E0BE750019708C /* MBjobSelector3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE4262505E0BE750019708C /* MBjobSelector3.png */; };
+		8BEBC03405DAA11100534DBC /* tableGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BEBC03205DAA11100534DBC /* tableGenerator.h */; };
+		8BEBC03505DAA11100534DBC /* tableGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEBC03305DAA11100534DBC /* tableGenerator.m */; };
+		8BEC38CB05D9512D00533678 /* prefs.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8BEC38CA05D9512D00533678 /* prefs.txt */; };
+		8D1107280486CEB800E47090 /* Khronos_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32CA4F630368D1EE00C91783 /* Khronos_Prefix.pch */; };
+		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
+		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
+		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		32CA4F630368D1EE00C91783 /* Khronos_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Khronos_Prefix.pch; sourceTree = "<group>"; };
+		8B05E99205D9A18A00228C57 /* khronos.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = khronos.icns; sourceTree = "<group>"; };
+		8B1E334105D8993C000E3A53 /* edit.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = edit.gif; path = Graphics/edit.gif; sourceTree = "<group>"; };
+		8B1E334205D8993C000E3A53 /* minus.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = minus.gif; path = Graphics/minus.gif; sourceTree = "<group>"; };
+		8B1E334305D8993C000E3A53 /* plus.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = plus.gif; path = Graphics/plus.gif; sourceTree = "<group>"; };
+		8B1E334405D8993C000E3A53 /* showSessions.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = showSessions.gif; path = Graphics/showSessions.gif; sourceTree = "<group>"; };
+		8B217FC505DC64CF008C95F4 /* jobActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jobActive.png; path = Graphics/jobActive.png; sourceTree = "<group>"; };
+		8B217FC605DC64CF008C95F4 /* jobInactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jobInactive.png; path = Graphics/jobInactive.png; sourceTree = "<group>"; };
+		8B217FC705DC64CF008C95F4 /* jobPause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jobPause.png; path = Graphics/jobPause.png; sourceTree = "<group>"; };
+		8B5A777005DC6F9D003BD710 /* stst_pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stst_pause.png; path = Graphics/stst_pause.png; sourceTree = "<group>"; };
+		8B5A777105DC6F9D003BD710 /* stst_pause2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stst_pause2.png; path = Graphics/stst_pause2.png; sourceTree = "<group>"; };
+		8B5A777205DC6F9D003BD710 /* stst_start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stst_start.png; path = Graphics/stst_start.png; sourceTree = "<group>"; };
+		8B5A777305DC6F9D003BD710 /* stst_stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stst_stop.png; path = Graphics/stst_stop.png; sourceTree = "<group>"; };
+		8B5A77B605DC7172003BD710 /* stst_null.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stst_null.png; path = Graphics/stst_null.png; sourceTree = "<group>"; };
+		8B5F2DCA05E33CF600501878 /* stst_nullPauseMB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stst_nullPauseMB.png; path = Graphics/stst_nullPauseMB.png; sourceTree = "<group>"; };
+		8B8C911805DAFB7200B25096 /* cuDateTime.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = cuDateTime.h; sourceTree = "<group>"; };
+		8B8C911905DAFB7200B25096 /* cuDateTime.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = cuDateTime.m; sourceTree = "<group>"; };
+		8BC18A4605DDB1B100C152EB /* stst_nullMB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stst_nullMB.png; path = Graphics/stst_nullMB.png; sourceTree = "<group>"; };
+		8BC18A4705DDB1B100C152EB /* stst_pause2MB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stst_pause2MB.png; path = Graphics/stst_pause2MB.png; sourceTree = "<group>"; };
+		8BC18A4805DDB1B100C152EB /* stst_playMB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stst_playMB.png; path = Graphics/stst_playMB.png; sourceTree = "<group>"; };
+		8BC18A4905DDB1B100C152EB /* stst_startMB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stst_startMB.png; path = Graphics/stst_startMB.png; sourceTree = "<group>"; };
+		8BC18A4A05DDB1B100C152EB /* stst_stopMB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stst_stopMB.png; path = Graphics/stst_stopMB.png; sourceTree = "<group>"; };
+		8BC21A8705D881FF001C2B42 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
+		8BC21A8805D881FF001C2B42 /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
+		8BC4A7ED05DBF1630022CDB4 /* dataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dataHandler.h; sourceTree = "<group>"; };
+		8BC4A7EE05DBF1630022CDB4 /* dataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dataHandler.m; sourceTree = "<group>"; };
+		8BD4F72C05E20112003ECE09 /* MBjobSelector3Alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MBjobSelector3Alt.png; sourceTree = "<group>"; };
+		8BE4262505E0BE750019708C /* MBjobSelector3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MBjobSelector3.png; path = Graphics/MBjobSelector3.png; sourceTree = "<group>"; };
+		8BEBC03205DAA11100534DBC /* tableGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tableGenerator.h; sourceTree = "<group>"; };
+		8BEBC03305DAA11100534DBC /* tableGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tableGenerator.m; sourceTree = "<group>"; };
+		8BEC38CA05D9512D00533678 /* prefs.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = prefs.txt; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8D1107320486CEB800E47090 /* Khronos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Khronos.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D11072E0486CEB800E47090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8BC21A8705D881FF001C2B42 /* Controller.h */,
+				8BC21A8805D881FF001C2B42 /* Controller.m */,
+				8B8C911805DAFB7200B25096 /* cuDateTime.h */,
+				8B8C911905DAFB7200B25096 /* cuDateTime.m */,
+				8BC4A7ED05DBF1630022CDB4 /* dataHandler.h */,
+				8BC4A7EE05DBF1630022CDB4 /* dataHandler.m */,
+				8BEBC03205DAA11100534DBC /* tableGenerator.h */,
+				8BEBC03305DAA11100534DBC /* tableGenerator.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
+				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107320486CEB800E47090 /* Khronos.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* Khronos */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = Khronos;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* Khronos_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8B05E99205D9A18A00228C57 /* khronos.icns */,
+				8B1E332A05D8992F000E3A53 /* Graphics */,
+				8BEC38CA05D9512D00533678 /* prefs.txt */,
+				8D1107310486CEB800E47090 /* Info.plist */,
+				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8B1E332A05D8992F000E3A53 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				8B5F2DCA05E33CF600501878 /* stst_nullPauseMB.png */,
+				8BD4F72C05E20112003ECE09 /* MBjobSelector3Alt.png */,
+				8BE4262505E0BE750019708C /* MBjobSelector3.png */,
+				8BC18A4605DDB1B100C152EB /* stst_nullMB.png */,
+				8BC18A4705DDB1B100C152EB /* stst_pause2MB.png */,
+				8BC18A4805DDB1B100C152EB /* stst_playMB.png */,
+				8BC18A4905DDB1B100C152EB /* stst_startMB.png */,
+				8BC18A4A05DDB1B100C152EB /* stst_stopMB.png */,
+				8B5A77B605DC7172003BD710 /* stst_null.png */,
+				8B5A777005DC6F9D003BD710 /* stst_pause.png */,
+				8B5A777105DC6F9D003BD710 /* stst_pause2.png */,
+				8B5A777205DC6F9D003BD710 /* stst_start.png */,
+				8B5A777305DC6F9D003BD710 /* stst_stop.png */,
+				8B217FC505DC64CF008C95F4 /* jobActive.png */,
+				8B217FC605DC64CF008C95F4 /* jobInactive.png */,
+				8B217FC705DC64CF008C95F4 /* jobPause.png */,
+				8B1E334105D8993C000E3A53 /* edit.gif */,
+				8B1E334205D8993C000E3A53 /* minus.gif */,
+				8B1E334305D8993C000E3A53 /* plus.gif */,
+				8B1E334405D8993C000E3A53 /* showSessions.gif */,
+			);
+			name = Graphics;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		8D1107270486CEB800E47090 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D1107280486CEB800E47090 /* Khronos_Prefix.pch in Headers */,
+				8BC21A8905D881FF001C2B42 /* Controller.h in Headers */,
+				8BEBC03405DAA11100534DBC /* tableGenerator.h in Headers */,
+				8B8C911A05DAFB7200B25096 /* cuDateTime.h in Headers */,
+				8BC4A7EF05DBF1630022CDB4 /* dataHandler.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		8D1107260486CEB800E47090 /* Khronos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40458E270C3B465700DB1FB9 /* Build configuration list for PBXNativeTarget "Khronos" */;
+			buildPhases = (
+				8D1107270486CEB800E47090 /* Headers */,
+				8D1107290486CEB800E47090 /* Resources */,
+				8D11072C0486CEB800E47090 /* Sources */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Khronos;
+			productInstallPath = "$(HOME)/Applications";
+			productName = Khronos;
+			productReference = 8D1107320486CEB800E47090 /* Khronos.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 40458E2B0C3B465700DB1FB9 /* Build configuration list for PBXProject "Khronos" */;
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* Khronos */;
+			projectDirPath = "";
+			targets = (
+				8D1107260486CEB800E47090 /* Khronos */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D1107290486CEB800E47090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */,
+				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				8B1E334A05D8993C000E3A53 /* edit.gif in Resources */,
+				8B1E334B05D8993C000E3A53 /* minus.gif in Resources */,
+				8B1E334C05D8993C000E3A53 /* plus.gif in Resources */,
+				8B1E334D05D8993C000E3A53 /* showSessions.gif in Resources */,
+				8BEC38CB05D9512D00533678 /* prefs.txt in Resources */,
+				8B05E99305D9A18A00228C57 /* khronos.icns in Resources */,
+				8B217FC805DC64CF008C95F4 /* jobActive.png in Resources */,
+				8B217FC905DC64CF008C95F4 /* jobInactive.png in Resources */,
+				8B217FCA05DC64CF008C95F4 /* jobPause.png in Resources */,
+				8B5A777405DC6F9D003BD710 /* stst_pause.png in Resources */,
+				8B5A777505DC6F9D003BD710 /* stst_pause2.png in Resources */,
+				8B5A777605DC6F9D003BD710 /* stst_start.png in Resources */,
+				8B5A777705DC6F9D003BD710 /* stst_stop.png in Resources */,
+				8B5A77B705DC7172003BD710 /* stst_null.png in Resources */,
+				8BC18A4B05DDB1B100C152EB /* stst_nullMB.png in Resources */,
+				8BC18A4C05DDB1B100C152EB /* stst_pause2MB.png in Resources */,
+				8BC18A4D05DDB1B100C152EB /* stst_playMB.png in Resources */,
+				8BC18A4E05DDB1B100C152EB /* stst_startMB.png in Resources */,
+				8BC18A4F05DDB1B100C152EB /* stst_stopMB.png in Resources */,
+				8BE4262605E0BE750019708C /* MBjobSelector3.png in Resources */,
+				8BD4F72D05E20112003ECE09 /* MBjobSelector3Alt.png in Resources */,
+				8B5F2DCB05E33CF600501878 /* stst_nullPauseMB.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D11072C0486CEB800E47090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072D0486CEB800E47090 /* main.m in Sources */,
+				8BC21A8A05D881FF001C2B42 /* Controller.m in Sources */,
+				8BEBC03505DAA11100534DBC /* tableGenerator.m in Sources */,
+				8B8C911B05DAFB7200B25096 /* cuDateTime.m in Sources */,
+				8BC4A7F005DBF1630022CDB4 /* dataHandler.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C165DFE840E0CC02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		29B97318FDCFA39411CA2CEA /* MainMenu.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				29B97319FDCFA39411CA2CEA /* English */,
+			);
+			name = MainMenu.nib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		40458E280C3B465700DB1FB9 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_TRIGRAPHS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Khronos_Prefix.pch;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = "";
+				OPTIMIZATION_CFLAGS = "-O0";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = Khronos;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = YES;
+			};
+			name = Development;
+		};
+		40458E290C3B465700DB1FB9 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_TRIGRAPHS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Khronos_Prefix.pch;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = Khronos;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		40458E2A0C3B465700DB1FB9 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_ENABLE_TRIGRAPHS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Khronos_Prefix.pch;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = Khronos;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = app;
+			};
+			name = Default;
+		};
+		40458E2C0C3B465700DB1FB9 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Development;
+		};
+		40458E2D0C3B465700DB1FB9 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Deployment;
+		};
+		40458E2E0C3B465700DB1FB9 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Default;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		40458E270C3B465700DB1FB9 /* Build configuration list for PBXNativeTarget "Khronos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40458E280C3B465700DB1FB9 /* Development */,
+				40458E290C3B465700DB1FB9 /* Deployment */,
+				40458E2A0C3B465700DB1FB9 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		40458E2B0C3B465700DB1FB9 /* Build configuration list for PBXProject "Khronos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40458E2C0C3B465700DB1FB9 /* Development */,
+				40458E2D0C3B465700DB1FB9 /* Deployment */,
+				40458E2E0C3B465700DB1FB9 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

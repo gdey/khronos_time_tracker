@@ -1,0 +1,161 @@
+// !$*UTF8*$!
+{
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Deployment;
+		activeExecutable = 40458E1B0C3B464E00DB1FB9 /* Khronos */;
+		activeTarget = 8D1107260486CEB800E47090 /* Khronos */;
+		breakpointsGroup = 40458E3A0C3B46A100DB1FB9 /* XCBreakpointsBucket */;
+		codeSenseManager = 40458E300C3B465700DB1FB9 /* Code sense */;
+		executables = (
+			40458E1B0C3B464E00DB1FB9 /* Khronos */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXExecutablesDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXExecutablesDataSource_NameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					22,
+					300,
+					322,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXExecutablesDataSource_ActiveFlagID,
+					PBXExecutablesDataSource_NameID,
+					PBXExecutablesDataSource_CommentsID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					341,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 205218793;
+			PBXWorkspaceStateSaveDate = 205218793;
+		};
+		sourceControlManager = 40458E2F0C3B465700DB1FB9 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {843, 263}}";
+			sepNavSelRange = "{60, 42}";
+			sepNavVisRect = "{{0, 0}, {843, 263}}";
+		};
+	};
+	40458E1B0C3B464E00DB1FB9 /* Khronos */ = {
+		isa = PBXExecutable;
+		activeArgIndex = 2147483647;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = Khronos;
+		savedGlobals = {
+		};
+		sourceDirectories = (
+		);
+	};
+	40458E2F0C3B465700DB1FB9 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+		scmType = "";
+	};
+	40458E300C3B465700DB1FB9 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	40458E3A0C3B46A100DB1FB9 /* XCBreakpointsBucket */ = {
+		isa = XCBreakpointsBucket;
+		name = "Project Breakpoints";
+		objects = (
+		);
+	};
+	8B8C911805DAFB7200B25096 /* cuDateTime.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {940, 882}}";
+			sepNavSelRange = "{1308, 0}";
+			sepNavVisRect = "{{0, 0}, {940, 645}}";
+			sepNavWindowFrame = "{{61, 57}, {979, 774}}";
+		};
+	};
+	8B8C911905DAFB7200B25096 /* cuDateTime.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {940, 11410}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 10765}, {940, 645}}";
+			sepNavWindowFrame = "{{84, 36}, {979, 774}}";
+		};
+	};
+	8BC21A8705D881FF001C2B42 /* Controller.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {940, 3864}}";
+			sepNavSelRange = "{7072, 0}";
+			sepNavVisRect = "{{0, 3219}, {940, 645}}";
+			sepNavWindowFrame = "{{38, 78}, {979, 774}}";
+		};
+	};
+	8BC21A8805D881FF001C2B42 /* Controller.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1129, 36232}}";
+			sepNavSelRange = "{123089, 0}";
+			sepNavVisRect = "{{0, 35568}, {1129, 664}}";
+			sepNavWindowFrame = "{{124, 85}, {1168, 793}}";
+		};
+	};
+	8BEBC03205DAA11100534DBC /* tableGenerator.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {940, 645}}";
+			sepNavSelRange = "{123, 0}";
+			sepNavVisRect = "{{0, 0}, {940, 645}}";
+			sepNavWindowFrame = "{{107, 15}, {979, 774}}";
+		};
+	};
+	8BEBC03305DAA11100534DBC /* tableGenerator.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {940, 3444}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 2799}, {940, 645}}";
+			sepNavWindowFrame = "{{15, 99}, {979, 774}}";
+		};
+	};
+	8D1107260486CEB800E47090 /* Khronos */ = {
+		activeExec = 0;
+		executables = (
+			40458E1B0C3B464E00DB1FB9 /* Khronos */,
+		);
+	};
+}

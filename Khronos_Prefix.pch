@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'Khronos' target in the 'Khronos' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
