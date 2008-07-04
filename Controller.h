@@ -5,6 +5,8 @@
 #import "cuDateTime.h"
 #import "dataHandler.h"
 
+@class CUPreferenceController;
+
 @interface Controller : NSObject
 {
 	BOOL firstLaunch;
@@ -181,6 +183,9 @@
 	IBOutlet id printHourlyRate;
 	IBOutlet id printTotalTimeLogged;
 	IBOutlet id printTotalCharges;
+    
+    // New Preferences Controller
+    CUPreferenceController *preferencesController;
 }
 //***Main Methods***
 - (void)applicationWillTerminate:(NSNotification *)notification;
@@ -273,4 +278,8 @@
 - (IBAction)menuVisitWebsite:(id)sender;
 - (IBAction)menuCheckForUpdates:(id)sender;
 - (IBAction)showPagePanel:(id)sender;
+
+/***** Preferences *****/
+- (IBAction)showPreferencesPanel:(id)sender;
+
 @end

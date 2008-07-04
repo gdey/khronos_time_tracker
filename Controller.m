@@ -1,7 +1,82 @@
 #import "Controller.h"
+#import "CUPreferenceController.h"
 
 @implementation Controller
 //***Main Methods***
+
++ (void)initialize 
+{
+    
+#pragma mark Setting Default Values.
+    // Create a Dictionary
+    NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
+    
+    // Register the default values for Clock, which is 24 hour clock.
+    [defaultValues setObject:[NSNumber numberWithBool:YES] forKey:CUPreferencesClockSetting];
+    // Register the default value for Update time, which is 0 minutes
+    [defaultValues setObject:[NSNumber numberWithInt:0] forKey:CUPreferencesUpdateTime];
+    // Register the default value for Montery Unit.
+    [defaultValues setObject:@"$" forKey:CUPreferencesMonetaryUnit];
+    
+    
+    NSLog(@"Registering Project Table Defaults.");
+    // Register the default value for the Poject Table.
+    NSArray *keys = [NSArray arrayWithObjects: 
+        CUPreferencesProjectDisplayNumber,
+        CUPreferencesProjectDisplayName,
+        CUPreferencesProjectDisplayClient,
+        CUPreferencesProjectDisplayRate,
+        CUPreferencesProjectDisplayTime,
+        CUPreferencesProjectDisplayCharges,
+                     nil];
+    NSArray *values = [NSArray arrayWithObjects:
+        [NSNumber  numberWithBool: YES], // Number
+        [NSNumber  numberWithBool: YES], // Name
+        [NSNumber  numberWithBool: YES], // Client Name
+        [NSNumber  numberWithBool: NO] , // Rate
+        [NSNumber  numberWithBool: YES], // Time
+        [NSNumber  numberWithBool: YES], // Charges
+                       nil];
+    
+    NSDictionary *projectTableValues = [NSDictionary dictionaryWithObjects:values 
+                                                                   forKeys:keys];
+    [defaultValues setObject:projectTableValues forKey:CUPreferencesProjectDisplay];
+    
+    NSLog(@"Registering Session Table Defaults.");
+    // Register the default value for the Poject Table.
+    keys = [NSArray arrayWithObjects: 
+            CUPreferencesSessionDisplayStartDate,
+            CUPreferencesSessionDisplayEndDate,
+            CUPreferencesSessionDisplayStartTime,
+            CUPreferencesSessionDisplayEndTime,
+            CUPreferencesSessionDisplayPauseTime,
+            CUPreferencesSessionDisplayTotalTime,
+            CUPreferencesSessionDisplayCharges,
+            CUPreferencesSessionDisplaySummary,
+            CUPreferencesSessionDisplayNumber,
+            nil];
+    values = [NSArray arrayWithObjects:
+              [NSNumber  numberWithBool: YES],  // Start Date
+              [NSNumber  numberWithBool: YES],  // End Date
+              [NSNumber  numberWithBool: YES],  // Start Time
+              [NSNumber  numberWithBool: YES],  // End Time
+              [NSNumber  numberWithBool: NO ],  // Pause Time
+              [NSNumber  numberWithBool: YES],  // Total Time
+              [NSNumber  numberWithBool: YES],  // Charges
+              [NSNumber  numberWithBool: YES],  // Summary
+              [NSNumber  numberWithBool: YES],  // Number
+              nil];
+    NSDictionary *sessionTableValues = [NSDictionary dictionaryWithObjects:values 
+                                                                   forKeys:keys];
+    [defaultValues setObject:sessionTableValues forKey:CUPreferencesSessionDisplay];
+    
+    
+    // Register the dictionary of defaults.
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
+    
+    NSLog(@"Registered defaults: %@", defaultValues );
+    
+}
 - (void)awakeFromNib
 {
     firstLaunch = NO;
@@ -18,11 +93,11 @@
     [mainWindow setFrameOrigin:NSMakePoint(windowY, windowX)];
     [mainWindow setContentSize:NSMakeSize(windowWidth, windowHeight)];
     
-    [addSessionButton setEnabled:NO];
+    [addSessionButton    setEnabled:NO];
     [deleteSessionButton setEnabled:NO];
-    [editSessionButton setEnabled:NO];
-    [deleteJobButton setEnabled:NO];
-    [editJobButton setEnabled:NO];
+    [editSessionButton   setEnabled:NO];
+    [deleteJobButton     setEnabled:NO];
+    [editJobButton       setEnabled:NO];
     
     if (firstLaunch)    [mainWindow center];
     
@@ -699,7 +774,14 @@
     saveTimer = 0;
     
     [dataHandler saveJobListToFile:jobData];
-    [self savePrefs];
+   // NSLog(@"Writing Defaults to disk.");
+   // BOOL yn = [[NSUserDefaults standardUserDefaults] synchronize];
+   // if(yn == NO)
+   // {
+   //     NSLog(@"Was not able to save values. something is wrong.");
+   // }
+    
+//    [self savePrefs];
 }
 
 - (void)savePrefs
@@ -2584,5 +2666,29 @@
     {
         NSRunAlertPanel([textYeargh stringValue], [textUpToDate stringValue], @"OK", nil, nil);
     }
+}
+
+/***** Preferences *****/
+- (IBAction)showPreferencesPanel:(id)sender
+{
+    // Is perferencesController nil?
+    if(!preferencesController) {
+        preferencesController = [[CUPreferenceController alloc] init];
+    }
+    [preferencesController showWindow:self];
+}
+
+/***** Dealloc *****/
+- (void)dealloc
+{
+    [preferencesController release];
+    NSLog(@"Writing Defaults to disk.");
+    BOOL yn = [[NSUserDefaults standardUserDefaults] synchronize];
+    if(yn == NO)
+    {
+        NSLog(@"Was not able to save values. something is wrong.");
+    }
+    
+    [super dealloc];
 }
 @end

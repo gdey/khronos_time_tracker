@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		40A773630C3B884100DFFD02 /* showSessions2.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A773620C3B884100DFFD02 /* showSessions2.png */; };
+		7AF508630E181A270090CFC7 /* CUPreferenceController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AF508610E181A270090CFC7 /* CUPreferenceController.h */; };
+		7AF508640E181A270090CFC7 /* CUPreferenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF508620E181A270090CFC7 /* CUPreferenceController.m */; };
+		7AF508B60E190BCE0090CFC7 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AF508B50E190BCE0090CFC7 /* Preferences.xib */; };
 		8B05E99305D9A18A00228C57 /* khronos.icns in Resources */ = {isa = PBXBuildFile; fileRef = 8B05E99205D9A18A00228C57 /* khronos.icns */; };
 		8B1E334A05D8993C000E3A53 /* edit.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8B1E334105D8993C000E3A53 /* edit.gif */; };
 		8B1E334B05D8993C000E3A53 /* minus.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8B1E334205D8993C000E3A53 /* minus.gif */; };
@@ -54,6 +57,9 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* Khronos_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Khronos_Prefix.pch; sourceTree = "<group>"; };
 		40A773620C3B884100DFFD02 /* showSessions2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = showSessions2.png; path = Graphics/showSessions2.png; sourceTree = "<group>"; };
+		7AF508610E181A270090CFC7 /* CUPreferenceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUPreferenceController.h; sourceTree = "<group>"; };
+		7AF508620E181A270090CFC7 /* CUPreferenceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUPreferenceController.m; sourceTree = "<group>"; };
+		7AF508B50E190BCE0090CFC7 /* Preferences.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
 		8B05E99205D9A18A00228C57 /* khronos.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = khronos.icns; sourceTree = "<group>"; };
 		8B1E334105D8993C000E3A53 /* edit.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = edit.gif; path = Graphics/edit.gif; sourceTree = "<group>"; };
 		8B1E334205D8993C000E3A53 /* minus.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = minus.gif; path = Graphics/minus.gif; sourceTree = "<group>"; };
@@ -103,6 +109,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7AF508610E181A270090CFC7 /* CUPreferenceController.h */,
+				7AF508620E181A270090CFC7 /* CUPreferenceController.m */,
 				8BC21A8705D881FF001C2B42 /* Controller.h */,
 				8BC21A8805D881FF001C2B42 /* Controller.m */,
 				8B8C911805DAFB7200B25096 /* cuDateTime.h */,
@@ -164,6 +172,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7AF508B50E190BCE0090CFC7 /* Preferences.xib */,
 				8B05E99205D9A18A00228C57 /* khronos.icns */,
 				8B1E332A05D8992F000E3A53 /* Graphics */,
 				8BEC38CA05D9512D00533678 /* prefs.txt */,
@@ -223,6 +232,7 @@
 				8BEBC03405DAA11100534DBC /* tableGenerator.h in Headers */,
 				8B8C911A05DAFB7200B25096 /* cuDateTime.h in Headers */,
 				8BC4A7EF05DBF1630022CDB4 /* dataHandler.h in Headers */,
+				7AF508630E181A270090CFC7 /* CUPreferenceController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,9 +264,11 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = 40458E2B0C3B465700DB1FB9 /* Build configuration list for PBXProject "Khronos" */;
+			compatibilityVersion = "Xcode 2.4";
 			hasScannedForEncodings = 1;
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Khronos */;
 			projectDirPath = "";
+			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* Khronos */,
 			);
@@ -293,6 +305,7 @@
 				8BD4F72D05E20112003ECE09 /* MBjobSelector3Alt.png in Resources */,
 				8B5F2DCB05E33CF600501878 /* stst_nullPauseMB.png in Resources */,
 				40A773630C3B884100DFFD02 /* showSessions2.png in Resources */,
+				7AF508B60E190BCE0090CFC7 /* Preferences.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +321,7 @@
 				8BEBC03505DAA11100534DBC /* tableGenerator.m in Sources */,
 				8B8C911B05DAFB7200B25096 /* cuDateTime.m in Sources */,
 				8BC4A7F005DBF1630022CDB4 /* dataHandler.m in Sources */,
+				7AF508640E181A270090CFC7 /* CUPreferenceController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,7 +367,6 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "";
-				OPTIMIZATION_CFLAGS = "-O0";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = Khronos;

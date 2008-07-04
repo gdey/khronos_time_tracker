@@ -1,176 +1,342 @@
-{
-    IBClasses = (
-        {
-            ACTIONS = {
-                addJobButton = id; 
-                addJobCancel = id; 
-                addJobSave = id; 
-                addSessionButton = id; 
-                addSessionCancel = id; 
-                addSessionSave = id; 
-                deleteJobButton = id; 
-                deleteSessionButton = id; 
-                editJobButton = id; 
-                editJobCancel = id; 
-                editJobSave = id; 
-                editSessionButton = id; 
-                editSessionCancel = id; 
-                editSessionSave = id; 
-                menuAddData = id; 
-                menuBlatantAd = id; 
-                menuCheckForUpdates = id; 
-                menuDisplayHelp = id; 
-                menuDonate = id; 
-                menuExport = id; 
-                menuHTML = id; 
-                menuHTMLAll = id; 
-                menuOpenWindow = id; 
-                menuPauseAllJobs = id; 
-                menuPrintInvoice = id; 
-                menuSave = id; 
-                menuSendEmail = id; 
-                menuVisitWebsite = id; 
-                pauseUnpause = id; 
-                prefsJobTableChange = id; 
-                prefsMenuChanged = id; 
-                prefsSave = id; 
-                prefsSessionTableChange = id; 
-                prefsUpdateTimeChange = id; 
-                showPagePanel = id; 
-                startStopRecording = id; 
-                statusItemChanged = id; 
-            }; 
-            CLASS = Controller; 
-            LANGUAGE = ObjC; 
-            OUTLETS = {
-                addJobClient = id; 
-                addJobHourlyRate = id; 
-                addJobJobName = id; 
-                addJobPanel = id; 
-                addSessionButton = id; 
-                addSessionEndDate = id; 
-                addSessionEndTime = id; 
-                addSessionPanel = id; 
-                addSessionStartDate = id; 
-                addSessionStartTime = id; 
-                deleteJobButton = id; 
-                deleteSessionButton = id; 
-                editJobButton = id; 
-                editJobClient = id; 
-                editJobHourlyRate = id; 
-                editJobJobName = id; 
-                editJobPanel = id; 
-                editSessionButton = id; 
-                editSessionEndDate = id; 
-                editSessionEndTime = id; 
-                editSessionPanel = id; 
-                editSessionStartDate = id; 
-                editSessionStartTime = id; 
-                jobTable = id; 
-                mainWindow = id; 
-                menuJobList = id; 
-                pauseButton = id; 
-                prefs2412Radio = id; 
-                prefsAskDeleteJob = id; 
-                prefsAskDeleteSession = id; 
-                prefsAutoDeleteSetting = id; 
-                prefsAutoSaveTime = id; 
-                prefsInvoiceBodyFont = id; 
-                prefsInvoiceHeader = id; 
-                prefsInvoiceHeaderFont = id; 
-                prefsInvoiceIndex = id; 
-                prefsInvoiceIndexHeader = id; 
-                prefsInvoiceIndexLink = id; 
-                prefsInvoiceSize = id; 
-                prefsInvoiceTitle = id; 
-                prefsJobDisplayCharges = id; 
-                prefsJobDisplayClient = id; 
-                prefsJobDisplayName = id; 
-                prefsJobDisplayNumber = id; 
-                prefsJobDisplayRate = id; 
-                prefsJobDisplayTime = id; 
-                prefsMenuAlertField = id; 
-                prefsMenuDisplayButton = id; 
-                prefsMenuDisplayCharges = id; 
-                prefsMenuDisplayList = id; 
-                prefsMenuDisplayTime = id; 
-                prefsMenuPauseButton = id; 
-                prefsMonetaryUnit = id; 
-                prefsSessionDisplayCharges = id; 
-                prefsSessionDisplayEDate = id; 
-                prefsSessionDisplayETime = id; 
-                prefsSessionDisplayNumber = id; 
-                prefsSessionDisplayPause = id; 
-                prefsSessionDisplaySDate = id; 
-                prefsSessionDisplaySTime = id; 
-                prefsSessionDisplaySummary = id; 
-                prefsSessionDisplayTotalTime = id; 
-                prefsUpdateEveryRadio = id; 
-                prefsWindow = id; 
-                printClientName = id; 
-                printHourlyRate = id; 
-                printJobName = id; 
-                printTable = id; 
-                printTotalCharges = id; 
-                printTotalTimeLogged = id; 
-                printWindow = id; 
-                sessionTable = id; 
-                startStopButton = id; 
-                startStopField = id; 
-                textArr = id; 
-                textBah = id; 
-                textCharges = id; 
-                textClientName = id; 
-                textDataMustBe = id; 
-                textDeleteJobLong = id; 
-                textDeleteJobShort = id; 
-                textDeleteSessionLong = id; 
-                textDeleteSessionShort = id; 
-                textEndLater = id; 
-                textExportTo = id; 
-                textHourSuffix = id; 
-                textJobActive = id; 
-                textJobName = id; 
-                textJobNumber = id; 
-                textMenuDisable = id; 
-                textNewVersion = id; 
-                textNoJobData = id; 
-                textPauses = id; 
-                textProblemConnect = id; 
-                textRate = id; 
-                textRejoice = id; 
-                textSelectFile = id; 
-                textSelectJob = id; 
-                textSessionActive = id; 
-                textSessionCharges = id; 
-                textSessionDate = id; 
-                textSessionEnd = id; 
-                textSessionEndDate = id; 
-                textSessionNumber = id; 
-                textSessionStart = id; 
-                textSessionSummary = id; 
-                textSessionTime = id; 
-                textStartRecording = id; 
-                textStopRecording = id; 
-                textTimeLogged = id; 
-                textTotalDue = id; 
-                textUpToDate = id; 
-                textYeargh = id; 
-            }; 
-            SUPERCLASS = NSObject; 
-        }, 
-        {
-            ACTIONS = {"" = id; }; 
-            CLASS = FirstResponder; 
-            LANGUAGE = ObjC; 
-            SUPERCLASS = NSObject; 
-        }, 
-        {
-            CLASS = printHandler; 
-            LANGUAGE = ObjC; 
-            OUTLETS = {theTable = id; theWindow = id; }; 
-            SUPERCLASS = NSObject; 
-        }
-    ); 
-    IBVersion = 1; 
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IBClasses</key>
+	<array>
+		<dict>
+			<key>ACTIONS</key>
+			<dict>
+				<key></key>
+				<string>id</string>
+			</dict>
+			<key>CLASS</key>
+			<string>FirstResponder</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>SUPERCLASS</key>
+			<string>NSObject</string>
+		</dict>
+		<dict>
+			<key>ACTIONS</key>
+			<dict>
+				<key>addJobButton</key>
+				<string>id</string>
+				<key>addJobCancel</key>
+				<string>id</string>
+				<key>addJobSave</key>
+				<string>id</string>
+				<key>addSessionButton</key>
+				<string>id</string>
+				<key>addSessionCancel</key>
+				<string>id</string>
+				<key>addSessionSave</key>
+				<string>id</string>
+				<key>deleteJobButton</key>
+				<string>id</string>
+				<key>deleteSessionButton</key>
+				<string>id</string>
+				<key>editJobButton</key>
+				<string>id</string>
+				<key>editJobCancel</key>
+				<string>id</string>
+				<key>editJobSave</key>
+				<string>id</string>
+				<key>editSessionButton</key>
+				<string>id</string>
+				<key>editSessionCancel</key>
+				<string>id</string>
+				<key>editSessionSave</key>
+				<string>id</string>
+				<key>jobMenuListSelectionChanged</key>
+				<string>id</string>
+				<key>menuAddData</key>
+				<string>id</string>
+				<key>menuBlatantAd</key>
+				<string>id</string>
+				<key>menuCheckForUpdates</key>
+				<string>id</string>
+				<key>menuDisplayHelp</key>
+				<string>id</string>
+				<key>menuDonate</key>
+				<string>id</string>
+				<key>menuExport</key>
+				<string>id</string>
+				<key>menuHTML</key>
+				<string>id</string>
+				<key>menuHTMLAll</key>
+				<string>id</string>
+				<key>menuOpenWindow</key>
+				<string>id</string>
+				<key>menuPauseAllJobs</key>
+				<string>id</string>
+				<key>menuPrintInvoice</key>
+				<string>id</string>
+				<key>menuSave</key>
+				<string>id</string>
+				<key>menuSendEmail</key>
+				<string>id</string>
+				<key>menuVisitWebsite</key>
+				<string>id</string>
+				<key>pauseUnpause</key>
+				<string>id</string>
+				<key>prefsJobTableChange</key>
+				<string>id</string>
+				<key>prefsMenuChanged</key>
+				<string>id</string>
+				<key>prefsSave</key>
+				<string>id</string>
+				<key>prefsSessionTableChange</key>
+				<string>id</string>
+				<key>prefsUpdateTimeChange</key>
+				<string>id</string>
+				<key>showPagePanel</key>
+				<string>id</string>
+				<key>showPreferencesPanel</key>
+				<string>id</string>
+				<key>startStopRecording</key>
+				<string>id</string>
+				<key>statusItemChanged</key>
+				<string>id</string>
+			</dict>
+			<key>CLASS</key>
+			<string>Controller</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>OUTLETS</key>
+			<dict>
+				<key>addJobClient</key>
+				<string>id</string>
+				<key>addJobHourlyRate</key>
+				<string>id</string>
+				<key>addJobJobName</key>
+				<string>id</string>
+				<key>addJobPanel</key>
+				<string>id</string>
+				<key>addSessionButton</key>
+				<string>id</string>
+				<key>addSessionEndDate</key>
+				<string>id</string>
+				<key>addSessionEndTime</key>
+				<string>id</string>
+				<key>addSessionPanel</key>
+				<string>id</string>
+				<key>addSessionStartDate</key>
+				<string>id</string>
+				<key>addSessionStartTime</key>
+				<string>id</string>
+				<key>deleteJobButton</key>
+				<string>id</string>
+				<key>deleteSessionButton</key>
+				<string>id</string>
+				<key>editJobButton</key>
+				<string>id</string>
+				<key>editJobClient</key>
+				<string>id</string>
+				<key>editJobHourlyRate</key>
+				<string>id</string>
+				<key>editJobJobName</key>
+				<string>id</string>
+				<key>editJobPanel</key>
+				<string>id</string>
+				<key>editSessionButton</key>
+				<string>id</string>
+				<key>editSessionEndDate</key>
+				<string>id</string>
+				<key>editSessionEndTime</key>
+				<string>id</string>
+				<key>editSessionPanel</key>
+				<string>id</string>
+				<key>editSessionStartDate</key>
+				<string>id</string>
+				<key>editSessionStartTime</key>
+				<string>id</string>
+				<key>jobTable</key>
+				<string>id</string>
+				<key>mainWindow</key>
+				<string>id</string>
+				<key>menuJobList</key>
+				<string>NSMenu</string>
+				<key>pauseButton</key>
+				<string>id</string>
+				<key>prefs2412Radio</key>
+				<string>id</string>
+				<key>prefsAskDeleteJob</key>
+				<string>id</string>
+				<key>prefsAskDeleteSession</key>
+				<string>id</string>
+				<key>prefsAutoDeleteSetting</key>
+				<string>id</string>
+				<key>prefsAutoSaveTime</key>
+				<string>id</string>
+				<key>prefsInvoiceBodyFont</key>
+				<string>id</string>
+				<key>prefsInvoiceHeader</key>
+				<string>id</string>
+				<key>prefsInvoiceHeaderFont</key>
+				<string>id</string>
+				<key>prefsInvoiceIndex</key>
+				<string>id</string>
+				<key>prefsInvoiceIndexHeader</key>
+				<string>id</string>
+				<key>prefsInvoiceIndexLink</key>
+				<string>id</string>
+				<key>prefsInvoiceSize</key>
+				<string>id</string>
+				<key>prefsInvoiceTitle</key>
+				<string>id</string>
+				<key>prefsJobDisplayCharges</key>
+				<string>id</string>
+				<key>prefsJobDisplayClient</key>
+				<string>id</string>
+				<key>prefsJobDisplayName</key>
+				<string>id</string>
+				<key>prefsJobDisplayNumber</key>
+				<string>id</string>
+				<key>prefsJobDisplayRate</key>
+				<string>id</string>
+				<key>prefsJobDisplayTime</key>
+				<string>id</string>
+				<key>prefsMenuAlertField</key>
+				<string>id</string>
+				<key>prefsMenuDisplayButton</key>
+				<string>id</string>
+				<key>prefsMenuDisplayCharges</key>
+				<string>id</string>
+				<key>prefsMenuDisplayList</key>
+				<string>id</string>
+				<key>prefsMenuDisplayTime</key>
+				<string>id</string>
+				<key>prefsMenuPauseButton</key>
+				<string>id</string>
+				<key>prefsMonetaryUnit</key>
+				<string>id</string>
+				<key>prefsSessionDisplayCharges</key>
+				<string>id</string>
+				<key>prefsSessionDisplayEDate</key>
+				<string>id</string>
+				<key>prefsSessionDisplayETime</key>
+				<string>id</string>
+				<key>prefsSessionDisplayNumber</key>
+				<string>id</string>
+				<key>prefsSessionDisplayPause</key>
+				<string>id</string>
+				<key>prefsSessionDisplaySDate</key>
+				<string>id</string>
+				<key>prefsSessionDisplaySTime</key>
+				<string>id</string>
+				<key>prefsSessionDisplaySummary</key>
+				<string>id</string>
+				<key>prefsSessionDisplayTotalTime</key>
+				<string>id</string>
+				<key>prefsUpdateEveryRadio</key>
+				<string>id</string>
+				<key>prefsWindow</key>
+				<string>id</string>
+				<key>printClientName</key>
+				<string>id</string>
+				<key>printHourlyRate</key>
+				<string>id</string>
+				<key>printJobName</key>
+				<string>id</string>
+				<key>printTable</key>
+				<string>id</string>
+				<key>printTotalCharges</key>
+				<string>id</string>
+				<key>printTotalTimeLogged</key>
+				<string>id</string>
+				<key>printWindow</key>
+				<string>id</string>
+				<key>sessionTable</key>
+				<string>id</string>
+				<key>startStopButton</key>
+				<string>id</string>
+				<key>startStopField</key>
+				<string>id</string>
+				<key>textArr</key>
+				<string>id</string>
+				<key>textBah</key>
+				<string>id</string>
+				<key>textCharges</key>
+				<string>id</string>
+				<key>textClientName</key>
+				<string>id</string>
+				<key>textDataMustBe</key>
+				<string>id</string>
+				<key>textDeleteJobLong</key>
+				<string>id</string>
+				<key>textDeleteJobShort</key>
+				<string>id</string>
+				<key>textDeleteSessionLong</key>
+				<string>id</string>
+				<key>textDeleteSessionShort</key>
+				<string>id</string>
+				<key>textEndLater</key>
+				<string>id</string>
+				<key>textExportTo</key>
+				<string>id</string>
+				<key>textHourSuffix</key>
+				<string>id</string>
+				<key>textJobActive</key>
+				<string>id</string>
+				<key>textJobName</key>
+				<string>id</string>
+				<key>textJobNumber</key>
+				<string>id</string>
+				<key>textMenuDisable</key>
+				<string>id</string>
+				<key>textNewVersion</key>
+				<string>id</string>
+				<key>textNoJobData</key>
+				<string>id</string>
+				<key>textPauses</key>
+				<string>id</string>
+				<key>textProblemConnect</key>
+				<string>id</string>
+				<key>textRate</key>
+				<string>id</string>
+				<key>textRejoice</key>
+				<string>id</string>
+				<key>textSelectFile</key>
+				<string>id</string>
+				<key>textSelectJob</key>
+				<string>id</string>
+				<key>textSessionActive</key>
+				<string>id</string>
+				<key>textSessionCharges</key>
+				<string>id</string>
+				<key>textSessionDate</key>
+				<string>id</string>
+				<key>textSessionEnd</key>
+				<string>id</string>
+				<key>textSessionEndDate</key>
+				<string>id</string>
+				<key>textSessionNumber</key>
+				<string>id</string>
+				<key>textSessionStart</key>
+				<string>id</string>
+				<key>textSessionSummary</key>
+				<string>id</string>
+				<key>textSessionTime</key>
+				<string>id</string>
+				<key>textStartRecording</key>
+				<string>id</string>
+				<key>textStopRecording</key>
+				<string>id</string>
+				<key>textTimeLogged</key>
+				<string>id</string>
+				<key>textTotalDue</key>
+				<string>id</string>
+				<key>textUpToDate</key>
+				<string>id</string>
+				<key>textYeargh</key>
+				<string>id</string>
+			</dict>
+			<key>SUPERCLASS</key>
+			<string>NSObject</string>
+		</dict>
+	</array>
+	<key>IBVersion</key>
+	<string>1</string>
+</dict>
+</plist>
