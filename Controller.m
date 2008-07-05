@@ -71,6 +71,31 @@
     [defaultValues setObject:sessionTableValues forKey:CUPreferencesSessionDisplay];
     
     
+    NSLog(@"Registering Invoice Defaults");
+    NSData *headingFontAsData = [NSKeyedArchiver archivedDataWithRootObject:[NSFont fontWithName:@"Helvetica" size:18]];
+    NSData *bodyFontAsData = [NSKeyedArchiver archivedDataWithRootObject:[NSFont fontWithName:@"Helvetica" size:10]];
+    keys = [NSArray arrayWithObjects:
+            CUPreferencesInvoiceIndexTitle,
+            CUPreferencesInvoiceIndexHeading,
+            CUPreferencesInvoiceTitle,
+            CUPreferencesInvoiceLinkHelp,
+            CUPreferencesInvoiceHeading,
+            CUPreferencesInvoiceHeadingFont,
+            CUPreferencesInvoiceBodyFont,
+            nil];
+    values = [NSArray arrayWithObjects:
+              @"Khronos Invoice List",                // Index Title
+              @"Invoices",                            // Index Heading
+              @"Khronos Invoice",                     // Title
+              @"Click the job to view the invoice.",  // Link Help
+              @"Invoice",                             // Heading
+              headingFontAsData,                      // Heading Font
+              bodyFontAsData,                         // Body Font
+              nil];
+    NSDictionary *invoiceValues = [NSDictionary dictionaryWithObjects:values
+                                                              forKeys:keys];
+    [defaultValues setObject:invoiceValues forKey:CUPreferencesInvoice];
+    
     // Register the dictionary of defaults.
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
     
@@ -772,15 +797,7 @@
 - (void)saveLoop
 {
     saveTimer = 0;
-    
     [dataHandler saveJobListToFile:jobData];
-   // NSLog(@"Writing Defaults to disk.");
-   // BOOL yn = [[NSUserDefaults standardUserDefaults] synchronize];
-   // if(yn == NO)
-   // {
-   //     NSLog(@"Was not able to save values. something is wrong.");
-   // }
-    
 //    [self savePrefs];
 }
 
@@ -2678,17 +2695,4 @@
     [preferencesController showWindow:self];
 }
 
-/***** Dealloc *****/
-- (void)dealloc
-{
-    [preferencesController release];
-    NSLog(@"Writing Defaults to disk.");
-    BOOL yn = [[NSUserDefaults standardUserDefaults] synchronize];
-    if(yn == NO)
-    {
-        NSLog(@"Was not able to save values. something is wrong.");
-    }
-    
-    [super dealloc];
-}
 @end

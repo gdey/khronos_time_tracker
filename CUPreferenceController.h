@@ -74,6 +74,17 @@ extern NSString *const CUPreferencesInvoiceHeadingFont;
     
     // Session Table Settings
     IBOutlet NSMatrix *sessionTableColumns;
+    
+    // Invoice Settings
+    // Text information
+    IBOutlet NSTextField *indexTitle;
+    IBOutlet NSTextField *indexHeading;
+    IBOutlet NSTextField *linkHelp;
+    IBOutlet NSTextField *invoiceTitle;
+    IBOutlet NSTextField *invoiceHeading;
+    // Fonts
+    IBOutlet NSTextField *bodyFont;
+    IBOutlet NSTextField *headingFont;
 }
 
 - (IBAction) resetPreferences:(id)sender;
@@ -126,7 +137,8 @@ extern NSString *const CUPreferencesInvoiceHeadingFont;
 - (NSString *)invoiceHeading;
 - (NSFont *)invoiceHeadingFont;
 - (NSFont *)invoiceBodyFont;
-/* Just For now.
+
+
 #pragma mark Invoice Options Actions
 - (IBAction) changeInvoiceIndexTitle:(id)sender;
 - (IBAction) changeInvoiceIndexHeading:(id)sender;
@@ -135,5 +147,10 @@ extern NSString *const CUPreferencesInvoiceHeadingFont;
 - (IBAction) changeInvoiceHeading:(id)sender;
 - (IBAction) changeInvoiceHeadingFont:(id)sender;
 - (IBAction) changeInvoiceBodyFont:(id)sender;
-*/
+- (IBAction) showFontPanelForHeading:(id)sender;
+- (IBAction) showFontPanelForBody:(id)sender;
+
+#pragma mark Menu Options
+
+#pragma mark Menu Options Actions
 @end

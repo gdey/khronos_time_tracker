@@ -133,6 +133,18 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
         id cell = [sessionTableColumns cellWithTag:i];
         [cell setState:[[columns objectForKey:[self sessionTableColumnNameForTag:i]] boolValue]];
     }
+    
+    
+    // Invoice Settings
+    NSLog(@"Seeting the text for Invoice");
+    [indexTitle setStringValue:[self invoiceIndexTitle]];
+    [indexHeading setStringValue:[self invoiceIndexHeading]];
+    [linkHelp setStringValue:[self invoiceLinkHelp]];
+    [invoiceTitle setStringValue:[self invoiceTitle]];
+    [invoiceHeading setStringValue:[self invoiceHeading]];
+    [bodyFont setObjectValue:[self invoiceBodyFont]];
+    [headingFont setObjectValue:[self invoiceHeadingFont]];
+    
 }
 - (void) windowDidLoad
 {
@@ -355,6 +367,7 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
     NSDictionary *invoice = [defaults dictionaryForKey:CUPreferencesInvoice];
     return [invoice objectForKey:CUPreferencesInvoiceHeading];
 }
+
 - (NSFont *)invoiceHeadingFont
 {
     NSLog(@"Return the default value for the invoice heading.");
@@ -373,6 +386,9 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
     return [NSKeyedUnarchiver unarchiveObjectWithData:fontAsData];
 }
 
+
+#pragma mark Menu Options
+
 #pragma mark Actions
 
 - (IBAction)resetPreferences:(id)sender
@@ -388,6 +404,7 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
     [defaults removeObjectForKey:CUPreferencesInvoice];
     [defaults removeObjectForKey:CUPreferencesProjectDisplay];
     [defaults removeObjectForKey:CUPreferencesSessionDisplay];
+    [defaults removeObjectForKey:CUPreferencesMenuDisplay];
     NSLog(@"Refreshing the display.");
     [self updatePreferences];
 }
@@ -471,5 +488,102 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
 }
 
 #pragma mark Invoice Options Actions
+- (IBAction) changeInvoiceIndexTitle:(id)sender
+{
+    NSString *value = [indexTitle stringValue];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *columns = [[defaults objectForKey:CUPreferencesInvoice] mutableCopy];
+    [columns setObject:value forKey:CUPreferencesInvoiceIndexTitle];
+    [defaults setObject:columns forKey:CUPreferencesInvoice];
+}
 
+-(IBAction) changeInvoiceIndexHeading:(id)sender
+{
+    NSString *value = [indexHeading stringValue];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *columns = [[defaults objectForKey:CUPreferencesInvoice] mutableCopy];
+    [columns setObject:value forKey:CUPreferencesInvoiceIndexHeading];
+    [defaults setObject:columns forKey:CUPreferencesInvoice];
+}
+
+- (IBAction) changeInvoiceTitle:(id)sender
+{
+    NSString *value = [invoiceTitle stringValue];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *columns = [[defaults objectForKey:CUPreferencesInvoice] mutableCopy];
+    [columns setObject:value forKey:CUPreferencesInvoiceTitle];
+    [defaults setObject:columns forKey:CUPreferencesInvoice];
+}
+
+-(IBAction) changeInvoiceLinkHelp:(id)sender
+{
+    NSString *value = [linkHelp stringValue];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *columns = [[defaults objectForKey:CUPreferencesInvoice] mutableCopy];
+    [columns setObject:value forKey:CUPreferencesInvoiceLinkHelp];
+    [defaults setObject:columns forKey:CUPreferencesInvoice];
+}
+
+-(IBAction) changeInvoiceHeading:(id)sender
+{
+    NSString *value = [invoiceHeading stringValue];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *columns = [[defaults objectForKey:CUPreferencesInvoice] mutableCopy];
+    [columns setObject:value forKey:CUPreferencesInvoiceHeading];
+    [defaults setObject:columns forKey:CUPreferencesInvoice];
+}
+
+-(IBAction) showFontPanelForHeading:(id)sender
+{
+    
+    NSFont *font = [self invoiceHeadingFont];
+    [[NSFontManager sharedFontManager] setSelectedFont:font
+                                            isMultiple:NO];
+        NSLog(@"Changing the font manager action to changeInvoiceHeadingFont:");
+    [[NSFontManager sharedFontManager] setAction:@selector(changeInvoiceHeadingFont:)];
+    [[NSFontManager sharedFontManager] orderFrontFontPanel:self];
+}
+-(IBAction) showFontPanelForBody:(id)sender
+{
+    
+    NSFont *font = [self invoiceBodyFont];
+    [[NSFontManager sharedFontManager] setSelectedFont:font
+                                            isMultiple:NO];
+    NSLog(@"Changing the font manager action to changeInvoiceBodyFont:");
+    [[NSFontManager sharedFontManager] setAction:@selector(changeInvoiceBodyFont:)];
+    [[NSFontManager sharedFontManager] orderFrontFontPanel:self];
+}
+
+
+-(IBAction) changeInvoiceHeadingFont:(id)sender
+{
+  /* This action will open up the font panel. */
+    NSFontManager *aFontManager = sender;
+    NSFont *aFont = [aFontManager convertFont:[self invoiceHeadingFont]];
+    NSLog(@"Changed Invoice Heading Font called with font name '%@' and size '%.0f'",[aFont fontName], [aFont pointSize]);
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *columns = [[defaults objectForKey:CUPreferencesInvoice] mutableCopy];
+    NSData *headingFontAsData = [NSKeyedArchiver archivedDataWithRootObject:aFont];
+    [columns setObject:headingFontAsData forKey:CUPreferencesInvoiceHeadingFont];
+    [defaults setObject:columns forKey:CUPreferencesInvoice];
+    [self updatePreferences];
+
+}
+
+-(IBAction) changeInvoiceBodyFont:(id)sender
+{
+    /* This action will open up the font panel. */
+    NSFontManager *aFontManager = sender;
+    NSFont *aFont = [aFontManager convertFont:[self invoiceHeadingFont]];
+    NSLog(@"Changed Invoice Body Font called with font name '%@' and size '%.0f'",[aFont fontName], [aFont pointSize]);
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *columns = [[defaults objectForKey:CUPreferencesInvoice] mutableCopy];
+    NSData *bodyFontAsData = [NSKeyedArchiver archivedDataWithRootObject:aFont];
+    [columns setObject:bodyFontAsData forKey:CUPreferencesInvoiceBodyFont];
+    [defaults setObject:columns forKey:CUPreferencesInvoice];
+    [self updatePreferences];
+
+}
+
+#pragma mark Menu Options Actions
 @end

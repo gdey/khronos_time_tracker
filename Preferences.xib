@@ -1562,7 +1562,8 @@ qAAAAAAAAAAAAAAAAAAAAAAAdGV4dAAAAABDb3B5cmlnaHQgQXBwbGUsIEluYy4sIDIwMDgAA</bytes
 																	<int key="NSPeriodicDelay">200</int>
 																	<int key="NSPeriodicInterval">25</int>
 																</object>
-																<reference key="NSSelectedCell" ref="299230337"/>
+																<int key="NSSelectedRow">-1</int>
+																<int key="NSSelectedCol">-1</int>
 																<reference key="NSBackgroundColor" ref="267256907"/>
 																<reference key="NSCellBackgroundColor" ref="267256907"/>
 															</object>
@@ -2246,6 +2247,9 @@ qAAAAAAAAAAAAAAAAAAAAAAAdGV4dAAAAABDb3B5cmlnaHQgQXBwbGUsIEluYy4sIDIwMDgAA</bytes
 			<object class="NSCustomObject" id="420476515">
 				<string key="NSClassName">NSFontManager</string>
 			</object>
+			<object class="NSCustomObject" id="292210050">
+				<string key="NSClassName">CUFontFormatter</string>
+			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<object class="NSMutableArray" key="connectionRecords">
@@ -2513,6 +2517,134 @@ qAAAAAAAAAAAAAAAAAAAAAAAdGV4dAAAAABDb3B5cmlnaHQgQXBwbGUsIEluYy4sIDIwMDgAA</bytes
 						<reference key="destination" ref="1103560"/>
 					</object>
 					<int key="connectionID">182</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">formatter</string>
+						<reference key="source" ref="679166057"/>
+						<reference key="destination" ref="292210050"/>
+					</object>
+					<int key="connectionID">184</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">formatter</string>
+						<reference key="source" ref="16117999"/>
+						<reference key="destination" ref="292210050"/>
+					</object>
+					<int key="connectionID">185</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">indexHeading</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="443233240"/>
+					</object>
+					<int key="connectionID">188</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">indexTitle</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="1003179466"/>
+					</object>
+					<int key="connectionID">189</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">invoiceHeading</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="258294573"/>
+					</object>
+					<int key="connectionID">190</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">invoiceTitle</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="577684694"/>
+					</object>
+					<int key="connectionID">191</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">linkHelp</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="167273917"/>
+					</object>
+					<int key="connectionID">192</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">bodyFont</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="679166057"/>
+					</object>
+					<int key="connectionID">193</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">headingFont</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="16117999"/>
+					</object>
+					<int key="connectionID">194</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showFontPanelForHeading:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="845899377"/>
+					</object>
+					<int key="connectionID">195</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showFontPanelForBody:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="593932614"/>
+					</object>
+					<int key="connectionID">196</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">changeInvoiceIndexTitle:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="1003179466"/>
+					</object>
+					<int key="connectionID">197</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">changeInvoiceIndexHeading:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="443233240"/>
+					</object>
+					<int key="connectionID">198</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">changeInvoiceLinkHelp:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="167273917"/>
+					</object>
+					<int key="connectionID">199</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">changeInvoiceTitle:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="577684694"/>
+					</object>
+					<int key="connectionID">200</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">changeInvoiceHeading:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="258294573"/>
+					</object>
+					<int key="connectionID">201</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3453,6 +3585,11 @@ qAAAAAAAAAAAAAAAAAAAAAAAdGV4dAAAAABDb3B5cmlnaHQgQXBwbGUsIEluYy4sIDIwMDgAA</bytes
 						<reference key="object" ref="412388856"/>
 						<reference key="parent" ref="1103560"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">183</int>
+						<reference key="object" ref="292210050"/>
+						<reference key="parent" ref="1002"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -3521,6 +3658,7 @@ qAAAAAAAAAAAAAAAAAAAAAAAdGV4dAAAAABDb3B5cmlnaHQgQXBwbGUsIEluYy4sIDIwMDgAA</bytes
 					<string>179.IBPluginDependency</string>
 					<string>18.IBPluginDependency</string>
 					<string>180.IBPluginDependency</string>
+					<string>183.IBPluginDependency</string>
 					<string>19.IBPluginDependency</string>
 					<string>2.IBPluginDependency</string>
 					<string>21.IBPluginDependency</string>
@@ -3563,13 +3701,14 @@ qAAAAAAAAAAAAAAAAAAAAAAAdGV4dAAAAABDb3B5cmlnaHQgQXBwbGUsIEluYy4sIDIwMDgAA</bytes
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilderKit</string>
 					<string>com.apple.InterfaceBuilderKit</string>
-					<string>{{265, 528}, {455, 387}}</string>
+					<string>{{701, 621}, {455, 387}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{265, 528}, {455, 387}}</string>
+					<string>{{701, 621}, {455, 387}}</string>
 					<reference ref="8"/>
 					<reference ref="8"/>
 					<string>{3.40282e+38, 3.40282e+38}</string>
 					<string>{514, 516}</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3680,11 +3819,19 @@ qAAAAAAAAAAAAAAAAAAAAAAAdGV4dAAAAABDb3B5cmlnaHQgQXBwbGUsIEluYy4sIDIwMDgAA</bytes
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">182</int>
+			<int key="maxID">201</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<object class="IBPartialClassDescription">
+					<string key="className">CUFontFormatter</string>
+					<string key="superclassName">NSFormatter</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">CUFontFormatter.h</string>
+					</object>
+				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">CUPreferenceController</string>
 					<string key="superclassName">NSWindowController</string>
@@ -3697,14 +3844,32 @@ qAAAAAAAAAAAAAAAAAAAAAAAdGV4dAAAAABDb3B5cmlnaHQgQXBwbGUsIEluYy4sIDIwMDgAA</bytes
 							<string>changeAutoDeleteSetting:</string>
 							<string>changeAutoSaveTime:</string>
 							<string>changeClock:</string>
+							<string>changeInvoiceBodyFont:</string>
+							<string>changeInvoiceHeading:</string>
+							<string>changeInvoiceHeadingFont:</string>
+							<string>changeInvoiceIndexHeading:</string>
+							<string>changeInvoiceIndexTitle:</string>
+							<string>changeInvoiceLinkHelp:</string>
+							<string>changeInvoiceTitle:</string>
 							<string>changeMonetaryUnit:</string>
 							<string>changeProjectTableDisplay:</string>
 							<string>changeSessionTableDisplay:</string>
 							<string>changeUpdateTime:</string>
 							<string>resetPreferences:</string>
+							<string>showFontPanelForBody:</string>
+							<string>showFontPanelForHeading:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -3726,7 +3891,14 @@ qAAAAAAAAAAAAAAAAAAAAAAAdGV4dAAAAABDb3B5cmlnaHQgQXBwbGUsIEluYy4sIDIwMDgAA</bytes
 							<string>askDeleteSession</string>
 							<string>autoDeleteSettings</string>
 							<string>autoSaveTime</string>
+							<string>bodyFont</string>
 							<string>clockSettings</string>
+							<string>headingFont</string>
+							<string>indexHeading</string>
+							<string>indexTitle</string>
+							<string>invoiceHeading</string>
+							<string>invoiceTitle</string>
+							<string>linkHelp</string>
 							<string>projectTableColumns</string>
 							<string>sessionTableColumns</string>
 							<string>updateTime</string>
@@ -3738,7 +3910,14 @@ qAAAAAAAAAAAAAAAAAAAAAAAdGV4dAAAAABDb3B5cmlnaHQgQXBwbGUsIEluYy4sIDIwMDgAA</bytes
 							<string>NSButton</string>
 							<string>NSButton</string>
 							<string>NSButton</string>
+							<string>NSTextField</string>
 							<string>NSMatrix</string>
+							<string>NSTextField</string>
+							<string>NSTextField</string>
+							<string>NSTextField</string>
+							<string>NSTextField</string>
+							<string>NSTextField</string>
+							<string>NSTextField</string>
 							<string>NSMatrix</string>
 							<string>NSMatrix</string>
 							<string>NSMatrix</string>

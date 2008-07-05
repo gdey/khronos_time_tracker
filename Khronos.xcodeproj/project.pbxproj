@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		40A773630C3B884100DFFD02 /* showSessions2.png in Resources */ = {isa = PBXBuildFile; fileRef = 40A773620C3B884100DFFD02 /* showSessions2.png */; };
+		7ACFD9930E1EFF5D0022C5BD /* CUFontFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ACFD9910E1EFF5D0022C5BD /* CUFontFormatter.h */; };
+		7ACFD9940E1EFF5D0022C5BD /* CUFontFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ACFD9920E1EFF5D0022C5BD /* CUFontFormatter.m */; };
 		7AF508630E181A270090CFC7 /* CUPreferenceController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AF508610E181A270090CFC7 /* CUPreferenceController.h */; };
 		7AF508640E181A270090CFC7 /* CUPreferenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF508620E181A270090CFC7 /* CUPreferenceController.m */; };
 		7AF508B60E190BCE0090CFC7 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AF508B50E190BCE0090CFC7 /* Preferences.xib */; };
@@ -57,6 +59,8 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* Khronos_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Khronos_Prefix.pch; sourceTree = "<group>"; };
 		40A773620C3B884100DFFD02 /* showSessions2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = showSessions2.png; path = Graphics/showSessions2.png; sourceTree = "<group>"; };
+		7ACFD9910E1EFF5D0022C5BD /* CUFontFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUFontFormatter.h; sourceTree = "<group>"; };
+		7ACFD9920E1EFF5D0022C5BD /* CUFontFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUFontFormatter.m; sourceTree = "<group>"; };
 		7AF508610E181A270090CFC7 /* CUPreferenceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUPreferenceController.h; sourceTree = "<group>"; };
 		7AF508620E181A270090CFC7 /* CUPreferenceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUPreferenceController.m; sourceTree = "<group>"; };
 		7AF508B50E190BCE0090CFC7 /* Preferences.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7ACFD9910E1EFF5D0022C5BD /* CUFontFormatter.h */,
+				7ACFD9920E1EFF5D0022C5BD /* CUFontFormatter.m */,
 				7AF508610E181A270090CFC7 /* CUPreferenceController.h */,
 				7AF508620E181A270090CFC7 /* CUPreferenceController.m */,
 				8BC21A8705D881FF001C2B42 /* Controller.h */,
@@ -233,6 +239,7 @@
 				8B8C911A05DAFB7200B25096 /* cuDateTime.h in Headers */,
 				8BC4A7EF05DBF1630022CDB4 /* dataHandler.h in Headers */,
 				7AF508630E181A270090CFC7 /* CUPreferenceController.h in Headers */,
+				7ACFD9930E1EFF5D0022C5BD /* CUFontFormatter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +329,7 @@
 				8B8C911B05DAFB7200B25096 /* cuDateTime.m in Sources */,
 				8BC4A7F005DBF1630022CDB4 /* dataHandler.m in Sources */,
 				7AF508640E181A270090CFC7 /* CUPreferenceController.m in Sources */,
+				7ACFD9940E1EFF5D0022C5BD /* CUFontFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
