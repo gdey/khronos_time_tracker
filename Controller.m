@@ -96,6 +96,25 @@
                                                               forKeys:keys];
     [defaultValues setObject:invoiceValues forKey:CUPreferencesInvoice];
     
+    NSLog(@"Registering Menu Table Defaults.");
+    // Register the default value for the Poject Table.
+    keys = [NSArray arrayWithObjects: 
+            CUPreferencesMenuDisplayPauseButton,
+            CUPreferencesMenuDisplayRecrodingButton,
+            CUPreferencesMenuDisplayProjectList,
+            CUPreferencesMenuDisplayTotalTime,
+            CUPreferencesMenuDisplayCharges,
+            nil];
+    values = [NSArray arrayWithObjects:
+              [NSNumber  numberWithBool: YES],  // Pause Button
+              [NSNumber  numberWithBool: YES],  // Recording Button
+              [NSNumber  numberWithBool: YES],  // Project List
+              [NSNumber  numberWithBool: YES],  // Total Time
+              [NSNumber  numberWithBool: YES],  // Charges
+              nil];
+    NSDictionary *menuTableValues = [NSDictionary dictionaryWithObjects:values 
+                                                                   forKeys:keys];
+    [defaultValues setObject:menuTableValues forKey:CUPreferencesMenuDisplay];
     // Register the dictionary of defaults.
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
     

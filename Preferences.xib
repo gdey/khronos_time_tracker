@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="3"/>
+			<integer value="2"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1361,6 +1361,7 @@ qAAAAAAAAAAAAAAAAAAAAAAAdGV4dAAAAABDb3B5cmlnaHQgQXBwbGUsIEluYy4sIDIwMDgAA</bytes
 																		<int key="NSCellFlags2">0</int>
 																		<string key="NSContents">Recording Button</string>
 																		<reference key="NSSupport" ref="24427824"/>
+																		<int key="NSTag">1</int>
 																		<reference key="NSControlView" ref="245049058"/>
 																		<int key="NSButtonFlags">1211912703</int>
 																		<int key="NSButtonFlags2">2</int>
@@ -1376,7 +1377,6 @@ qAAAAAAAAAAAAAAAAAAAAAAAdGV4dAAAAABDb3B5cmlnaHQgQXBwbGUsIEluYy4sIDIwMDgAA</bytes
 																		<int key="NSCellFlags2">0</int>
 																		<string key="NSContents">Pause Button</string>
 																		<reference key="NSSupport" ref="24427824"/>
-																		<int key="NSTag">1</int>
 																		<reference key="NSControlView" ref="245049058"/>
 																		<int key="NSButtonFlags">1211912703</int>
 																		<int key="NSButtonFlags2">2</int>
@@ -1547,7 +1547,7 @@ qAAAAAAAAAAAAAAAAAAAAAAAdGV4dAAAAABDb3B5cmlnaHQgQXBwbGUsIEluYy4sIDIwMDgAA</bytes
 																</object>
 																<string key="NSCellSize">{193, 23}</string>
 																<string key="NSIntercellSpacing">{0, 0}</string>
-																<int key="NSMatrixFlags">603979776</int>
+																<int key="NSMatrixFlags">67108864</int>
 																<nil key="NSCellClass"/>
 																<object class="NSButtonCell" key="NSProtoCell" id="58636005">
 																	<int key="NSCellFlags">-2080244224</int>
@@ -1562,8 +1562,7 @@ qAAAAAAAAAAAAAAAAAAAAAAAdGV4dAAAAABDb3B5cmlnaHQgQXBwbGUsIEluYy4sIDIwMDgAA</bytes
 																	<int key="NSPeriodicDelay">200</int>
 																	<int key="NSPeriodicInterval">25</int>
 																</object>
-																<int key="NSSelectedRow">-1</int>
-																<int key="NSSelectedCol">-1</int>
+																<reference key="NSSelectedCell" ref="299230337"/>
 																<reference key="NSBackgroundColor" ref="267256907"/>
 																<reference key="NSCellBackgroundColor" ref="267256907"/>
 															</object>
@@ -2646,6 +2645,14 @@ qAAAAAAAAAAAAAAAAAAAAAAAdGV4dAAAAABDb3B5cmlnaHQgQXBwbGUsIEluYy4sIDIwMDgAA</bytes
 					</object>
 					<int key="connectionID">201</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">changeMenuTableDisplay:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="245049058"/>
+					</object>
+					<int key="connectionID">202</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -3701,9 +3708,9 @@ qAAAAAAAAAAAAAAAAAAAAAAAdGV4dAAAAABDb3B5cmlnaHQgQXBwbGUsIEluYy4sIDIwMDgAA</bytes
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilderKit</string>
 					<string>com.apple.InterfaceBuilderKit</string>
-					<string>{{701, 621}, {455, 387}}</string>
+					<string>{{482, 603}, {455, 387}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{701, 621}, {455, 387}}</string>
+					<string>{{482, 603}, {455, 387}}</string>
 					<reference ref="8"/>
 					<reference ref="8"/>
 					<string>{3.40282e+38, 3.40282e+38}</string>
@@ -3819,7 +3826,7 @@ qAAAAAAAAAAAAAAAAAAAAAAAdGV4dAAAAABDb3B5cmlnaHQgQXBwbGUsIEluYy4sIDIwMDgAA</bytes
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">201</int>
+			<int key="maxID">202</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3851,6 +3858,7 @@ qAAAAAAAAAAAAAAAAAAAAAAAdGV4dAAAAABDb3B5cmlnaHQgQXBwbGUsIEluYy4sIDIwMDgAA</bytes
 							<string>changeInvoiceIndexTitle:</string>
 							<string>changeInvoiceLinkHelp:</string>
 							<string>changeInvoiceTitle:</string>
+							<string>changeMenuTableDisplay:</string>
 							<string>changeMonetaryUnit:</string>
 							<string>changeProjectTableDisplay:</string>
 							<string>changeSessionTableDisplay:</string>
@@ -3861,6 +3869,7 @@ qAAAAAAAAAAAAAAAAAAAAAAAdGV4dAAAAABDb3B5cmlnaHQgQXBwbGUsIEluYy4sIDIwMDgAA</bytes
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>

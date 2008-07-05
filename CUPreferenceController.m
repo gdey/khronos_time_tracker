@@ -70,11 +70,19 @@ NSString *const CUPreferencesSessionDisplayNumber      = @"Number";
 /*** Options for the menu bar ***/
 // CUPreferencesMenuDisplay dictonary to hold the options for the menu bar.
 NSString *const CUPreferencesMenuDisplay                = @"Menubar Display";
+
 NSString *const CUPreferencesMenuDisplayPauseButton     = @"Pause Button";
+#define CU_PREF_MENUDSP_TAG_PAUSEBUTTON     0
 NSString *const CUPreferencesMenuDisplayRecrodingButton = @"Recording Button";
+#define CU_PREF_MENUDSP_TAG_RECRODINGBUTTON 1
 NSString *const CUPreferencesMenuDisplayProjectList     = @"Projects List";
+#define CU_PREF_MENUDSP_TAG_PROJECTLIST     2
 NSString *const CUPreferencesMenuDisplayTotalTime       = @"Total Time";
+#define CU_PREF_MENUDSP_TAG_TOTALTIME       3
 NSString *const CUPreferencesMenuDisplayCharges         = @"Charges";
+#define CU_PREF_MENUDSP_TAG_CHARGES         4
+#define CU_PREF_MENUDSP_MAX_TAG_NUMBER      4
+
 
 /*** Options for Invoice ***/
 // CUPreferecncesInvoice is a dictonary to hold the options for creating the Invoice.
@@ -388,6 +396,59 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
 
 
 #pragma mark Menu Options
+- (NSDictionary *)menuTableColumns
+{
+    NSLog(@"Returning the default value for the menu columns.");
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults dictionaryForKey:CUPreferencesMenuDisplay];
+}
+
+- (NSString *)menuTableColumnNameForTag:(int)tag
+{
+    NSString *column = nil;
+    switch (tag) {
+        case CU_PREF_MENUDSP_TAG_PAUSEBUTTON:
+            column = CUPreferencesMenuDisplayPauseButton;
+            break;
+        case CU_PREF_MENUDSP_TAG_RECRODINGBUTTON:
+            column = CUPreferencesMenuDisplayRecrodingButton;
+            break;
+        case CU_PREF_MENUDSP_TAG_PROJECTLIST:
+            column = CUPreferencesMenuDisplayProjectList;
+            break;
+        case CU_PREF_MENUDSP_TAG_TOTALTIME:
+            column = CUPreferencesMenuDisplayTotalTime;
+            break;
+        case CU_PREF_MENUDSP_TAG_CHARGES:
+            column = CUPreferencesMenuDisplayCharges;
+        default:
+            // do nothing
+            break;
+    };
+    return column;
+}
+- (void)setMenuTableColumn:(NSString *)column display:(BOOL)yn
+{
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *columns = [[defaults dictionaryForKey:CUPreferencesMenuDisplay] mutableCopy];
+    if(!columns)
+    {
+        NSLog(@"We did not get back a dictonary for '%@'",CUPreferencesMenuDisplay);
+        return;
+    }
+    NSLog(@"Setting the display of Menu Table Column '%@' to %@", column, (yn == YES)?@"Yes":@"No");
+    [columns setObject:[NSNumber numberWithBool:yn] forKey:column];
+    [defaults setObject:columns forKey:CUPreferencesMenuDisplay];
+}
+
+- (BOOL)displayMenuTableColumn:(NSString *)column
+{
+    NSLog(@"Getting value for Menu Table column %@", column);
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *columns = [defaults dictionaryForKey:CUPreferencesMenuDisplay];
+    return [[columns objectForKey:column] boolValue];
+}
 
 #pragma mark Actions
 
@@ -586,4 +647,14 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
 }
 
 #pragma mark Menu Options Actions
+- (IBAction) changeMenuTableDisplay:(id)sender
+{
+    id checkBox = [sender selectedCell];
+    int tag = [checkBox tag];
+    NSString *column = [self menuTableColumnNameForTag:tag];
+    if(column){
+        NSLog(@"Setting Menu Table Column %@ default value.",column);
+        [self setMenuTableColumn:column display:[checkBox state]];
+    }
+}
 @end

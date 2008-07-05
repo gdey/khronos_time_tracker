@@ -151,6 +151,10 @@ extern NSString *const CUPreferencesInvoiceHeadingFont;
 - (IBAction) showFontPanelForBody:(id)sender;
 
 #pragma mark Menu Options
-
+- (NSString *)menuTableColumnNameForTag:(int)tag;
+- (NSDictionary *)menuTableColumns;
+- (BOOL)displayMenuTableColumn:(NSString *)column;
+- (void)setMenuTableColumn:(NSString *)column display:(BOOL)yn;
+- (IBAction) changeMenuTableDisplay:(id)sender;
 #pragma mark Menu Options Actions
 @end
