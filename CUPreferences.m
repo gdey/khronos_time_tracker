@@ -256,4 +256,86 @@ NSString *const CUPreferencesSessionDisplayNumber       = @"Number";
     [[NSUserDefaults standardUserDefaults] setObject:unit  forKey:CUPreferencesMonetaryUnit];    
 }
 
+#pragma mark Invoce Options
+- (NSDictionary *)invoiceTable
+{
+    return [[NSUserDefaults standardUserDefaults] dictionaryForKey:CUPreferencesInvoice];
+}
+
+- (id)invoiceValuesForColumn:(NSString *)column
+{
+    return [[self invoiceTable] objectForKey:column];
+}
+
+- (void)setInvoiceValueForColumn:(NSString *)column value:(id)value
+{
+
+    NSMutableDictionary *table = [[self invoiceTable] mutableCopy];
+    [table setObject:value forKey:column];
+    [[NSUserDefaults standardUserDefaults] setObject:table forKey:CUPreferencesInvoice];
+}
+    
+- (NSString *)invoiceIndexTitle
+{
+    return [self invoiceValuesForColumn:CUPreferencesInvoiceIndexTitle];
+}
+    
+- (void) setInvoiceIndexTitle:(NSString *)title
+{
+    [self setInvoiceValueForColumn:CUPreferencesInvoiceIndexTitle value:title];
+}
+    
+- (NSString *)invoiceIndexHeading
+{
+    return [self invoiceValuesForColumn:CUPreferencesInvoiceIndexHeading];
+}
+- (void) setInvoiceIndexHeading:(NSString *)heading
+{
+    [self setInvoiceValueForColumn:CUPreferencesInvoiceIndexHeading value:heading];
+}
+- (NSString *)invoiceLinkHelp
+{
+    return [self invoiceValuesForColumn:CUPreferencesInvoiceLinkHelp];
+}
+- (void) setInvoiceLinkHelp:(NSString *)linkHelp
+{
+    [self setInvoiceValueForColumn:CUPreferencesInvoiceLinkHelp value:linkHelp];
+}
+- (NSString *)invoiceTitle
+{
+    [self invoiceValuesForColumn:CUPreferencesInvoiceTitle];
+}
+- (void) setInvoiceTitle:(NSString  *)title
+{
+    [self setInvoiceValueForColumn:CUPreferencesInvoiceTitle value:title];
+}
+- (NSString *)invoiceHeading
+{
+    [self invoiceValuesForColumn:CUPreferencesInvoiceHeading];
+}
+- (void)setInvoiceHeading:(NSString *)heading
+{
+    [self setInvoiceValueForColumn:CUPreferencesInvoiceHeading value:heading];
+}
+- (NSFont *)invoiceHeadingFont
+{
+    NSData *fontAsData = [self invoiceValuesForColumn:CUPreferencesInvoiceHeadingFont];
+    return [NSKeyedUnarchiver unarchiveObjectWithData:fontAsData];
+}
+- (void)setInvoiceHeadingFont:(NSFont *)aFont
+{
+    NSData *fontAsData = [NSKeyedArchiver archivedDataWithRootObject:aFont];
+    [self setInvoiceValueForColumn:CUPreferencesInvoiceHeadingFont value:fontAsData];
+}
+- (NSFont *)invoiceBodyFont
+{
+    NSData *fontAsData = [self invoiceValuesForColumn:CUPreferencesInvoiceBodyFont];
+    return [NSKeyedUnarchiver unarchiveObjectWithData:fontAsData];    
+}
+- (void)setInvoiceBodyFont:(NSFont *)aFont
+{
+    NSData *fontAsData = [NSKeyedArchiver archivedDataWithRootObject:aFont];
+    [self setInvoiceValueForColumn:CUPreferencesInvoiceBodyFont value:fontAsData];
+}
+
 @end

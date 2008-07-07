@@ -87,6 +87,9 @@ extern NSString *const CUPreferencesInvoiceHeadingFont;
 
 
 #pragma mark Invoice Options
+- (NSDictionary *)invoiceTable;
+- (id)invoiceValuesForColumn:(NSString *)column;
+- (void)setInvoiceValueForColumn:(NSString *)column value:(id)value;
 - (NSString *)invoiceIndexTitle;
 - (void) setInvoiceIndexTitle:(NSString *)title;
 - (NSString *)invoiceIndexHeading;
