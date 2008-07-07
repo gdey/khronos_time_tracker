@@ -80,7 +80,7 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
     [defaults removeObjectForKey:CUPreferencesMenuDisplay];     
 }
 
-+ (void) initilizeDefaults
++ (void) initializeDefaults
 {
 #pragma mark Setting Default Values.
     // Create a Dictionary
@@ -206,6 +206,8 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
 {
     NSMutableDictionary *newTable = [[self columnsForTable:tableName] mutableCopy];
     [newTable setObject:[NSNumber numberWithBool:yn] forKey:column];
+    NSLog(@"Setting table '%@' to value %@",tableName, newTable);
+    [[NSUserDefaults standardUserDefaults] setObject:newTable forKey:tableName];
 }
 - (BOOL) displayForTable:(NSString *)tableName column:(NSString *)column
 {
@@ -231,7 +233,8 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
 
 - (void) setAskDeleteSession:(BOOL)yn
 {
-    [[NSUserDefaults standardUserDefaults] setBool:yn ForKey:CUPreferencesAskDeleteSession];
+
+    [[NSUserDefaults standardUserDefaults] setBool:yn forKey:CUPreferencesAskDeleteSession];
 }
 
 - (BOOL) autoSaveTime
@@ -248,7 +251,7 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
 {
     return [[NSUserDefaults standardUserDefaults] boolForKey:CUPreferencesAutoDeleteSettings];    
 }
-- (void) setAutoDeleteSettings:(BOOL)value
+- (void) setAutoDeleteSettings:(BOOL)yn
 {
     [[NSUserDefaults standardUserDefaults] setBool:yn forKey:CUPreferencesAutoDeleteSettings];
 }
@@ -256,7 +259,7 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
 {
     return [[NSUserDefaults standardUserDefaults] boolForKey:CUPreferencesClockSetting];
 }
-- (void) setIs24HourClock:(BOOL)value
+- (void) setIs24HourClock:(BOOL)yn
 {
     [[NSUserDefaults standardUserDefaults] setBool:yn forKey:CUPreferencesClockSetting];
 }
@@ -324,7 +327,7 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
 }
 - (NSString *)invoiceTitle
 {
-    [self invoiceValuesForColumn:CUPreferencesInvoiceTitle];
+    return [self invoiceValuesForColumn:CUPreferencesInvoiceTitle];
 }
 - (void) setInvoiceTitle:(NSString  *)title
 {
@@ -332,7 +335,7 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
 }
 - (NSString *)invoiceHeading
 {
-    [self invoiceValuesForColumn:CUPreferencesInvoiceHeading];
+    return [self invoiceValuesForColumn:CUPreferencesInvoiceHeading];
 }
 - (void)setInvoiceHeading:(NSString *)heading
 {

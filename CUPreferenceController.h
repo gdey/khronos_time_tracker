@@ -8,11 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class Preferences;
+@class CUPreferences;
 
 @interface CUPreferenceController : NSWindowController {
 
-    Preferences *preferences;
+    CUPreferences *preferences;
     
     IBOutlet NSButton *askDeleteProject;
     IBOutlet NSButton *askDeleteSession;
@@ -68,15 +68,6 @@
 - (IBAction) changeSessionTableDisplay:(id)sender;
 
 // Options for Invoice
-#pragma mark Invoice Options
-- (NSString *)invoiceIndexTitle;
-- (NSString *)invoiceIndexHeading;
-- (NSString *)invoiceLinkHelp;
-- (NSString *)invoiceTitle;
-- (NSString *)invoiceHeading;
-- (NSFont *)invoiceHeadingFont;
-- (NSFont *)invoiceBodyFont;
-
 #pragma mark Invoice Options Actions
 - (IBAction) changeInvoiceIndexTitle:(id)sender;
 - (IBAction) changeInvoiceIndexHeading:(id)sender;

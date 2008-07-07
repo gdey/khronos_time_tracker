@@ -64,7 +64,7 @@
 {
     if(![super initWithWindowNibName:@"Preferences"])
         return nil;
-    preferences = [[Preferences init] alloc];
+    preferences = [[CUPreferences init] alloc];
     return self;
 }
 
@@ -234,7 +234,7 @@
 
 - (IBAction)resetPreferences:(id)sender 
 {
-    [preferences resetPreferences];
+    [CUPreferences resetPreferences];
     NSLog(@"Refreshing the display.");
     [self updatePreferences];
 }
@@ -242,7 +242,7 @@
 
 - (IBAction)changeAskDeleteProject:(id)sender
 {
-    [preferences setAskDeleteProject:[askDeleteProject state];
+    [preferences setAskDeleteProject:[askDeleteProject state]];
 }
 
 -(IBAction)changeAskDeleteSession:(id)sender
@@ -257,7 +257,7 @@
 
 -(IBAction) changeAutoDeleteSetting:(id)sender
 {
-    [preferences setAutoDeleteSettings:[autoDeleteSettings state]]
+    [preferences setAutoDeleteSettings:[autoDeleteSettings state]];
 }
 
 -(IBAction) changeClock:(id)sender

@@ -60,7 +60,7 @@ extern NSString *const CUPreferencesInvoiceHeadingFont;
 }
 
 + (void) resetPreferences;
-+ (void) initilizeDefaults;
++ (void) initializeDefaults;
 
 // Functions for working with the various tables.
 // These functions will work for the Project Table, Session Table and te Menu. 

@@ -1,5 +1,6 @@
 #import "Controller.h"
 #import "CUPreferenceController.h"
+#import "CUPreferences.h"
 
 
 @implementation Controller
@@ -7,9 +8,7 @@
 
 + (void)initialize 
 {
-    
-
-    
+    [CUPreferences initializeDefaults];    
 }
 - (void)awakeFromNib
 {
