@@ -8,13 +8,33 @@
 
 + (void)initialize 
 {
-    [CUPreferences initializeDefaults];    
+    [CUPreferences initializeDefaults];  
+}
+
+- (void)dealloc
+{
+    [preferences release];
+    [preferencesController release];
+    // Remove Notifications.
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc removeObserver:self];
+    [super dealloc];
 }
 - (void)awakeFromNib
 {
-    firstLaunch = NO;
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     
-    [self loadPrefsFromFile];
+    if(!preferences)
+        preferences = [[CUPreferences init] alloc];
+    firstLaunch = [preferences firstLaunch];
+    
+    // Attach Notifications
+    [nc addObserver:self
+           selector:@selector(handleClockSettingsChanged:)
+               name:CUPreferencesTimeSettingsChangedNotification
+             object:nil];
+    
+     [self loadPrefsFromFile];
     
     if (floor(NSAppKitVersionNumber) <= NSAppKitVersionNumber10_2)
     {
@@ -119,6 +139,13 @@
     [mainWindow makeKeyAndOrderFront:nil];
 }
 
+- (void) handleClockSettingsChanged:(NSNotification *)note
+{
+    NSLog(@"Recieved Notification %@",note);
+    [jobTable reloadData];
+    [sessionTable reloadData];
+    
+}
 - (void)applicationWillTerminate:(NSNotification *)notification
 {
     [self saveLoop];

@@ -15,6 +15,14 @@ extern NSString *const CUPreferencesAutoDeleteSettings;
 extern NSString *const CUPreferencesClockSetting;
 extern NSString *const CUPreferencesUpdateTime;
 extern NSString *const CUPreferencesMonetaryUnit;
+extern NSString *const CUPreferencesFirstLaunch;
+extern NSString *const CUPreferencesTimeSettingsChangedNotification;
+extern NSString *const CUPreferencesClockSettingNotification;
+extern NSString *const CUPreferencesUpdateTimeNotification;
+
+extern NSString *const CUPreferencesTableNotification;      
+extern NSString *const CUPreferencesTableUserInfoTableName; 
+extern NSString *const CUPreferencesTableUserInfoColumnName;
 
 /*** Which columns in the Project table should be shown. ***/
 extern NSString *const CUPreferencesProjectDisplay;
@@ -84,6 +92,7 @@ extern NSString *const CUPreferencesInvoiceHeadingFont;
 - (void) setUpdateTimeEvery:(int)minutes;
 - (NSString *)monetaryUnit;
 - (void) setMonetaryUnit:(NSString *)unit;
+- (BOOL) firstLaunch;
 
 
 #pragma mark Invoice Options

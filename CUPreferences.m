@@ -16,7 +16,16 @@ NSString *const CUPreferencesAutoDeleteSettings  = @"Delete Settings";
 NSString *const CUPreferencesMonetaryUnit        = @"Monetary Unit";
 NSString *const CUPreferencesClockSetting        = @"24 Hour Clock";
 NSString *const CUPreferencesUpdateTime          = @"Update time";
+NSString *const CUPreferencesFirstLaunch         = @"First Launch";
+NSString *const CUPreferencesTimeSettingsChangedNotification = @"CUTimeSettingsChangedNotification";
+NSString *const CUPreferencesClockSettingNotification = @"CUClockChangedNotification";
+NSString *const CUPreferencesUpdateTimeNotification   = @"CUUpdateTimeNotification";
 
+
+/*** General Table info ***/
+NSString *const CUPreferencesTableNotification       = @"CUPreferencesTableNotification";
+NSString *const CUPreferencesTableUserInfoTableName  = @"CUPreferencesTableUserInfoTableName";
+NSString *const CUPreferencesTableUserInfoColumnName = @"CUPreferencesTableUserInfoColumnName";
 /*** Which columns in the Project table should be shown. ***/
 // CUPreferencesProjectDisplay is a dictonary to hold the options for the Project Table.
 NSString *const CUPreferencesProjectDisplay           = @"Project Display";
@@ -66,6 +75,7 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
 
 + (void) resetPreferences 
 {
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSLog(@"Deleting Preferences.");
     [defaults removeObjectForKey:CUPreferencesAskDeleteProject];
@@ -78,6 +88,12 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
     [defaults removeObjectForKey:CUPreferencesProjectDisplay];
     [defaults removeObjectForKey:CUPreferencesSessionDisplay];
     [defaults removeObjectForKey:CUPreferencesMenuDisplay];     
+    NSLog(@"Sending out notifications.");
+    NSLog(@"Sending notification %@",CUPreferencesClockSettingNotification);
+    [nc postNotificationName:CUPreferencesClockSettingNotification object:self];
+    [nc postNotificationName:CUPreferencesUpdateTimeNotification object:self];
+    [nc postNotificationName:CUPreferencesTimeSettingsChangedNotification object:self];
+
 }
 
 + (void) initializeDefaults
@@ -204,10 +220,17 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
 }
 - (void) setTable:(NSString *)tableName column:(NSString *)column display:(BOOL)yn
 {
+    NSNotificationCenter *nc;
+    nc = [NSNotificationCenter defaultCenter];
     NSMutableDictionary *newTable = [[self columnsForTable:tableName] mutableCopy];
     [newTable setObject:[NSNumber numberWithBool:yn] forKey:column];
     NSLog(@"Setting table '%@' to value %@",tableName, newTable);
     [[NSUserDefaults standardUserDefaults] setObject:newTable forKey:tableName];
+    [nc postNotificationName:CUPreferencesTableNotification 
+                      object:self 
+                    userInfo:[NSDictionary 
+                              dictionaryWithObjects: [NSArray arrayWithObjects: tableName, column, nil]
+                              forKeys: [NSArray arrayWithObjects: CUPreferencesTableUserInfoTableName, CUPreferencesTableUserInfoColumnName, nil]]];
 }
 - (BOOL) displayForTable:(NSString *)tableName column:(NSString *)column
 {
@@ -262,6 +285,14 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
 - (void) setIs24HourClock:(BOOL)yn
 {
     [[NSUserDefaults standardUserDefaults] setBool:yn forKey:CUPreferencesClockSetting];
+    
+    // Notification
+    NSNotificationCenter *nc;
+    nc = [NSNotificationCenter defaultCenter];
+    NSLog(@"Sending notification %@",CUPreferencesClockSettingNotification);
+    [nc postNotificationName:CUPreferencesClockSettingNotification object:self];
+    [nc postNotificationName:CUPreferencesTimeSettingsChangedNotification object:self];
+    
 }
 - (int) updateTimeEvery
 {
@@ -270,6 +301,10 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
 - (void) setUpdateTimeEvery:(int)minutes
 {
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:minutes] forKey:CUPreferencesUpdateTime];    
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    NSLog(@"Sending notification %@",CUPreferencesUpdateTimeNotification);
+    [nc postNotificationName:CUPreferencesUpdateTimeNotification object:self];
+    [nc postNotificationName:CUPreferencesTimeSettingsChangedNotification object:self];
 }
 - (NSString *)monetaryUnit
 {
@@ -280,6 +315,14 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
     [[NSUserDefaults standardUserDefaults] setObject:unit  forKey:CUPreferencesMonetaryUnit];    
 }
 
+- (BOOL) firstLaunch
+{
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    BOOL state = [defaults boolForKey:CUPreferencesFirstLaunch];
+    if(state) 
+        [defaults setBool:NO forKey:CUPreferencesFirstLaunch];
+    return state;
+}
 #pragma mark Invoce Options
 - (NSDictionary *)invoiceTable
 {

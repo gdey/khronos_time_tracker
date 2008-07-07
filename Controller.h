@@ -6,9 +6,11 @@
 #import "dataHandler.h"
 
 @class CUPreferenceController;
+@class CUPreferences;
 
 @interface Controller : NSObject
 {
+
 	BOOL firstLaunch;
 	int windowHeight;
 	int windowWidth;
@@ -186,6 +188,7 @@
     
     // New Preferences Controller
     CUPreferenceController *preferencesController;
+    CUPreferences *preferences;
 }
 //***Main Methods***
 - (void)applicationWillTerminate:(NSNotification *)notification;
@@ -281,5 +284,6 @@
 
 /***** Preferences *****/
 - (IBAction)showPreferencesPanel:(id)sender;
+- (void) handleClockSettingsChanged:(NSNotification *)note;
 
 @end
