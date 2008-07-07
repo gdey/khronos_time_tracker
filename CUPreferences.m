@@ -40,6 +40,27 @@ NSString *const CUPreferencesSessionDisplayCharges      = @"Charges";
 NSString *const CUPreferencesSessionDisplaySummary      = @"Summary";
 NSString *const CUPreferencesSessionDisplayNumber       = @"Number";
 
+/*** Options for the menu bar ***/
+// CUPreferencesMenuDisplay dictonary to hold the options for the menu bar.
+NSString *const CUPreferencesMenuDisplay                = @"Menubar Display";
+NSString *const CUPreferencesMenuDisplayPauseButton     = @"Pause Button";
+NSString *const CUPreferencesMenuDisplayRecrodingButton = @"Recording Button";
+NSString *const CUPreferencesMenuDisplayProjectList     = @"Projects List";
+NSString *const CUPreferencesMenuDisplayTotalTime       = @"Total Time";
+NSString *const CUPreferencesMenuDisplayCharges         = @"Charges";
+
+/*** Options for Invoice ***/
+// CUPreferecncesInvoice is a dictonary to hold the options for creating the Invoice.
+NSString *const CUPreferencesInvoice               = @"Invoice";
+NSString *const CUPreferencesInvoiceIndexTitle     = @"Index Title";
+NSString *const CUPreferencesInvoiceIndexHeading   = @"Index Heading";
+NSString *const CUPreferencesInvoiceLinkHelp       = @"Link Help";
+NSString *const CUPreferencesInvoiceTitle          = @"Title";
+NSString *const CUPreferencesInvoiceHeading        = @"Heading";
+NSString *const CUPreferencesInvoiceBodyFont       = @"Body Font";
+NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
+
+
 @implementation CUPreferences
 
 

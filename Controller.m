@@ -1,124 +1,14 @@
 #import "Controller.h"
 #import "CUPreferenceController.h"
 
+
 @implementation Controller
 //***Main Methods***
 
 + (void)initialize 
 {
     
-#pragma mark Setting Default Values.
-    // Create a Dictionary
-    NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
-    
-    // Register the default values for Clock, which is 24 hour clock.
-    [defaultValues setObject:[NSNumber numberWithBool:YES] forKey:CUPreferencesClockSetting];
-    // Register the default value for Update time, which is 0 minutes
-    [defaultValues setObject:[NSNumber numberWithInt:0] forKey:CUPreferencesUpdateTime];
-    // Register the default value for Montery Unit.
-    [defaultValues setObject:@"$" forKey:CUPreferencesMonetaryUnit];
-    
-    
-    NSLog(@"Registering Project Table Defaults.");
-    // Register the default value for the Poject Table.
-    NSArray *keys = [NSArray arrayWithObjects: 
-        CUPreferencesProjectDisplayNumber,
-        CUPreferencesProjectDisplayName,
-        CUPreferencesProjectDisplayClient,
-        CUPreferencesProjectDisplayRate,
-        CUPreferencesProjectDisplayTime,
-        CUPreferencesProjectDisplayCharges,
-                     nil];
-    NSArray *values = [NSArray arrayWithObjects:
-        [NSNumber  numberWithBool: YES], // Number
-        [NSNumber  numberWithBool: YES], // Name
-        [NSNumber  numberWithBool: YES], // Client Name
-        [NSNumber  numberWithBool: NO] , // Rate
-        [NSNumber  numberWithBool: YES], // Time
-        [NSNumber  numberWithBool: YES], // Charges
-                       nil];
-    
-    NSDictionary *projectTableValues = [NSDictionary dictionaryWithObjects:values 
-                                                                   forKeys:keys];
-    [defaultValues setObject:projectTableValues forKey:CUPreferencesProjectDisplay];
-    
-    NSLog(@"Registering Session Table Defaults.");
-    // Register the default value for the Poject Table.
-    keys = [NSArray arrayWithObjects: 
-            CUPreferencesSessionDisplayStartDate,
-            CUPreferencesSessionDisplayEndDate,
-            CUPreferencesSessionDisplayStartTime,
-            CUPreferencesSessionDisplayEndTime,
-            CUPreferencesSessionDisplayPauseTime,
-            CUPreferencesSessionDisplayTotalTime,
-            CUPreferencesSessionDisplayCharges,
-            CUPreferencesSessionDisplaySummary,
-            CUPreferencesSessionDisplayNumber,
-            nil];
-    values = [NSArray arrayWithObjects:
-              [NSNumber  numberWithBool: YES],  // Start Date
-              [NSNumber  numberWithBool: YES],  // End Date
-              [NSNumber  numberWithBool: YES],  // Start Time
-              [NSNumber  numberWithBool: YES],  // End Time
-              [NSNumber  numberWithBool: NO ],  // Pause Time
-              [NSNumber  numberWithBool: YES],  // Total Time
-              [NSNumber  numberWithBool: YES],  // Charges
-              [NSNumber  numberWithBool: YES],  // Summary
-              [NSNumber  numberWithBool: YES],  // Number
-              nil];
-    NSDictionary *sessionTableValues = [NSDictionary dictionaryWithObjects:values 
-                                                                   forKeys:keys];
-    [defaultValues setObject:sessionTableValues forKey:CUPreferencesSessionDisplay];
-    
-    
-    NSLog(@"Registering Invoice Defaults");
-    NSData *headingFontAsData = [NSKeyedArchiver archivedDataWithRootObject:[NSFont fontWithName:@"Helvetica" size:18]];
-    NSData *bodyFontAsData = [NSKeyedArchiver archivedDataWithRootObject:[NSFont fontWithName:@"Helvetica" size:10]];
-    keys = [NSArray arrayWithObjects:
-            CUPreferencesInvoiceIndexTitle,
-            CUPreferencesInvoiceIndexHeading,
-            CUPreferencesInvoiceTitle,
-            CUPreferencesInvoiceLinkHelp,
-            CUPreferencesInvoiceHeading,
-            CUPreferencesInvoiceHeadingFont,
-            CUPreferencesInvoiceBodyFont,
-            nil];
-    values = [NSArray arrayWithObjects:
-              @"Khronos Invoice List",                // Index Title
-              @"Invoices",                            // Index Heading
-              @"Khronos Invoice",                     // Title
-              @"Click the job to view the invoice.",  // Link Help
-              @"Invoice",                             // Heading
-              headingFontAsData,                      // Heading Font
-              bodyFontAsData,                         // Body Font
-              nil];
-    NSDictionary *invoiceValues = [NSDictionary dictionaryWithObjects:values
-                                                              forKeys:keys];
-    [defaultValues setObject:invoiceValues forKey:CUPreferencesInvoice];
-    
-    NSLog(@"Registering Menu Table Defaults.");
-    // Register the default value for the Poject Table.
-    keys = [NSArray arrayWithObjects: 
-            CUPreferencesMenuDisplayPauseButton,
-            CUPreferencesMenuDisplayRecrodingButton,
-            CUPreferencesMenuDisplayProjectList,
-            CUPreferencesMenuDisplayTotalTime,
-            CUPreferencesMenuDisplayCharges,
-            nil];
-    values = [NSArray arrayWithObjects:
-              [NSNumber  numberWithBool: YES],  // Pause Button
-              [NSNumber  numberWithBool: YES],  // Recording Button
-              [NSNumber  numberWithBool: YES],  // Project List
-              [NSNumber  numberWithBool: YES],  // Total Time
-              [NSNumber  numberWithBool: YES],  // Charges
-              nil];
-    NSDictionary *menuTableValues = [NSDictionary dictionaryWithObjects:values 
-                                                                   forKeys:keys];
-    [defaultValues setObject:menuTableValues forKey:CUPreferencesMenuDisplay];
-    // Register the dictionary of defaults.
-    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
-    
-    NSLog(@"Registered defaults: %@", defaultValues );
+
     
 }
 - (void)awakeFromNib
