@@ -83,6 +83,7 @@ extern NSString *const CUPreferencesInvoiceHeadingFont;
 - (int) updateTimeEvery;
 - (void) setUpdateTimeEvery:(int)minutes;
 - (NSString *)monetaryUnit;
+- (void) setMonetaryUnit:(NSString *)unit;
 
 
 #pragma mark Invoice Options
