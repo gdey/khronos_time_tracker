@@ -52,7 +52,6 @@
                name:CUPreferencesResetNotification
              object:nil];
     
-     [self loadPrefsFromFile];
     
     if (floor(NSAppKitVersionNumber) <= NSAppKitVersionNumber10_2)
     {
@@ -60,9 +59,9 @@
         [prefsMenuDisplayList setEnabled:NO];
         [prefsMenuAlertField setStringValue:[textMenuDisable stringValue]];
     }
-    
-    [mainWindow setFrameOrigin:NSMakePoint(windowY, windowX)];
-    [mainWindow setContentSize:NSMakeSize(windowWidth, windowHeight)];
+   // FIXME: Need to save the window size and placement (gdey) 
+   // [mainWindow setFrameOrigin:NSMakePoint(windowY, windowX)];
+   // [mainWindow setContentSize:NSMakeSize(windowWidth, windowHeight)];
     
     [addSessionButton    setEnabled:NO];
     [deleteSessionButton setEnabled:NO];
@@ -107,24 +106,7 @@
         [jobData setArray:[dataHandler createJobListFromFile:[@"~/Library/Application Support/Khronos/khronosData.khd" stringByExpandingTildeInPath]]];
     else if ([fileManager fileExistsAtPath:@"/Library/Application Support/KhronosHelp/khronosData.khd"])
         [jobData setArray:[dataHandler createJobListFromFile:@"/Library/Application Support/KhronosHelp/khronosData.khd"]];
-    //else
-        //[jobData setArray:[dataHandler createJobListFromFile:@"nil"]];
-    
-    /*if (firstLaunch)
-    {
-        if ([fileManager fileExistsAtPath:@"/Library/Application Support/KhronosHelp/khronosData.khd"] &&
-            ![fileManager fileExistsAtPath:[@"~/Library/Application Support/Khronos/khronosData.khd" stringByExpandingTildeInPath]])    
-            [jobData setArray:[dataHandler createJobListFromFile:@"/Library/Application Support/KhronosHelp/khronosData.khd"]];
-        else if ([fileManager fileExistsAtPath:[@"~/Library/Application Support/Khronos/khronosData.khd" stringByExpandingTildeInPath]])
-            [jobData setArray:[dataHandler createJobListFromFile:[@"~/Library/Application Support/Khronos/khronosData.khd" stringByExpandingTildeInPath]]];
-        else    [jobData setArray:[dataHandler createJobListFromFile:[@"~/Library/Application Support/Khronos/khronosData.khd" stringByExpandingTildeInPath]]];
-    }
-    else if ([fileManager fileExistsAtPath:[@"~/Library/Application Support/Khronos/khronosData.khd" stringByExpandingTildeInPath]])
-    {
-        [jobData setArray:[dataHandler createJobListFromFile:[@"~/Library/Application Support/Khronos/khronosData.khd" stringByExpandingTildeInPath]]];
-    }
-    else    [jobData setArray:[dataHandler createJobListFromFile:[@"~/Library/Application Support/Khronos/khronosData.khd" stringByExpandingTildeInPath]]];*/
-    
+      
     int i = 0;
     int count = [jobData count];
     while (i < count)
@@ -257,153 +239,6 @@
     [mathTime release];
     [mathTimeTwo release];
     [mathTimeThree release];
-}
-
-- (void)loadPrefsFromFile
-{
-    NSBundle *bundle = [NSBundle mainBundle];
-    NSString *prefPath = [bundle pathForResource:@"prefs" ofType:@"txt"];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    if ([fileManager fileExistsAtPath:prefPath]){
-    NSString *prefsData = [NSString stringWithContentsOfFile:prefPath];
-    
-    int i = 0;
-    int count = [prefsData length];
-    int dataCount = 0;
-    int lowCount = 0;
-    while (i < count)
-    {
-        if ([prefsData characterAtIndex:i] == '\n')
-        {
-            if (dataCount == 0)
-                windowX = [[prefsData substringToIndex:i] intValue];
-            if (dataCount == 1)
-                windowY = [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] intValue];
-            if (dataCount == 2)
-                windowWidth = [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] intValue];
-            if (dataCount == 3)
-                windowHeight = [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] intValue];
-            if (dataCount == 4)
-                [prefs2412Radio setState:YES atRow:[[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] intValue] column:0];
-            if (dataCount == 5 && [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] isEqualTo:@"Yes"])
-                [prefsAskDeleteJob setState:YES];
-            if (dataCount == 6 && [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] isEqualTo:@"Yes"])
-                [prefsAskDeleteSession setState:YES];
-            if (dataCount == 7)
-            {
-                saveTimer = [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] intValue] * 60;
-                [prefsAutoSaveTime setStringValue:[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)]];
-            }
-            if (dataCount == 8)
-            {
-                autoDeleteTime = [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] intValue];
-                [prefsAutoDeleteSetting setStringValue:[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)]];
-            }
-            if (dataCount == 9)
-            {
-                [prefsMonetaryUnit setStringValue:[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)]];
-            }
-            if (dataCount == 10)
-                [prefsUpdateEveryRadio setState:YES atRow:[[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] intValue] column:0];
-            
-            if (dataCount == 12 && [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] isEqualTo:@"Yes"])
-                [prefsJobDisplayNumber setState:YES];
-            if (dataCount == 13 && [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] isEqualTo:@"Yes"])
-                [prefsJobDisplayName setState:YES];
-            if (dataCount == 14 && [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] isEqualTo:@"Yes"])
-                [prefsJobDisplayClient setState:YES];
-            if (dataCount == 15 && [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] isEqualTo:@"Yes"])
-                [prefsJobDisplayRate setState:YES];
-            if (dataCount == 16 && [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] isEqualTo:@"Yes"])
-                [prefsJobDisplayTime setState:YES];
-            if (dataCount == 17 && [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] isEqualTo:@"Yes"])
-                [prefsJobDisplayCharges setState:YES];
-                
-            if (dataCount == 19 && [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] isEqualTo:@"Yes"])
-                [prefsSessionDisplayNumber setState:YES];
-            if (dataCount == 20 && [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] isEqualTo:@"Yes"])
-                [prefsSessionDisplaySDate setState:YES];
-            if (dataCount == 21 && [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] isEqualTo:@"Yes"])
-                [prefsSessionDisplaySTime setState:YES];
-            if (dataCount == 22 && [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] isEqualTo:@"Yes"])
-                [prefsSessionDisplayEDate setState:YES];
-            if (dataCount == 23 && [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] isEqualTo:@"Yes"])
-                [prefsSessionDisplayETime setState:YES];
-            if (dataCount == 24 && [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] isEqualTo:@"Yes"])
-                [prefsSessionDisplayPause setState:YES];
-            if (dataCount == 25 && [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] isEqualTo:@"Yes"])
-                [prefsSessionDisplayTotalTime setState:YES];
-            if (dataCount == 26 && [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] isEqualTo:@"Yes"])
-                [prefsSessionDisplayCharges setState:YES];
-            if (dataCount == 27 && [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] isEqualTo:@"Yes"])
-                [prefsSessionDisplaySummary setState:YES];
-            
-            if (dataCount == 29 && [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] isEqualTo:@"Yes"])
-                [prefsMenuPauseButton setState:YES];
-            if (dataCount == 30 && [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] isEqualTo:@"Yes"])
-                [prefsMenuDisplayButton setState:YES];
-            if (dataCount == 31 && [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] isEqualTo:@"Yes"])
-                [prefsMenuDisplayList setState:YES];
-            if (dataCount == 32 && [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] isEqualTo:@"Yes"])
-                [prefsMenuDisplayTime setState:YES];
-            if (dataCount == 33 && [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] isEqualTo:@"Yes"])
-                [prefsMenuDisplayCharges setState:YES];
-            
-            if (dataCount == 35) [prefsInvoiceIndex setStringValue:[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)]];
-            if (dataCount == 36) [prefsInvoiceIndexHeader setStringValue:[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)]];
-            if (dataCount == 37) [prefsInvoiceIndexLink setStringValue:[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)]];
-            if (dataCount == 38) [prefsInvoiceTitle setStringValue:[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)]];
-            if (dataCount == 39) [prefsInvoiceHeader setStringValue:[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)]];
-            if (dataCount == 40) [prefsInvoiceBodyFont selectItemAtIndex:[[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] intValue]];
-            if (dataCount == 41) [prefsInvoiceHeaderFont selectItemAtIndex:[[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] intValue]];
-            if (dataCount == 42) [prefsInvoiceSize setIntValue:[[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] intValue]];
-            
-            if (dataCount == 44 && [[prefsData substringWithRange:NSMakeRange(lowCount + 1, i - lowCount - 1)] isEqualTo:@"Yes"])
-                firstLaunch = YES;
-                
-            dataCount++;
-            lowCount = i;
-        }
-        i++;
-    }}
-    else
-    {
-        windowX = 100;
-        windowY = 100;
-        windowWidth = 545;
-        windowHeight = 240;
-        [prefs2412Radio setState:YES atRow:0 column:0];
-        [prefsAskDeleteJob setState:YES];
-        [prefsAskDeleteSession setState:YES];
-        saveTimer = 5;
-        [prefsAutoSaveTime setStringValue:@"5"];
-        autoDeleteTime = 0;
-        [prefsAutoDeleteSetting setStringValue:@"0"];
-        [prefsMonetaryUnit setStringValue:@"$"];
-        [prefsUpdateEveryRadio setState:YES atRow:0 column:0];
-        [prefsJobDisplayNumber setState:YES];
-        [prefsJobDisplayName setState:YES];
-        [prefsJobDisplayClient setState:YES];
-        [prefsJobDisplayRate setState:YES];
-        [prefsJobDisplayTime setState:YES];
-        [prefsJobDisplayCharges setState:YES];
-        [prefsSessionDisplayNumber setState:YES];
-        [prefsSessionDisplaySDate setState:YES];
-        [prefsSessionDisplaySTime setState:YES];
-        [prefsSessionDisplayEDate setState:NO];
-        [prefsSessionDisplayETime setState:YES];
-        [prefsSessionDisplayPause setState:NO];
-        [prefsSessionDisplayTotalTime setState:YES];
-        [prefsSessionDisplayCharges setState:NO];
-        [prefsSessionDisplaySummary setState:YES];
-        [prefsMenuPauseButton setState:YES];
-        [prefsMenuDisplayButton setState:YES];
-        [prefsMenuDisplayList setState:YES];
-        [prefsMenuDisplayTime setState:YES];
-        [prefsMenuDisplayCharges setState:YES];
-        firstLaunch = YES;
-    }
 }
 
 - (void)buildJobTable
@@ -833,98 +668,6 @@
 //    [self savePrefs];
 }
 
-- (void)savePrefs
-{
-    NSMutableString *prefsData = [[[NSMutableString alloc] init] autorelease];
-    
-    [prefsData appendString:[[NSNumber numberWithInt:[mainWindow frame].origin.y] stringValue]];
-    [prefsData appendString:@"\n"];
-    [prefsData appendString:[[NSNumber numberWithInt:[mainWindow frame].origin.x] stringValue]];
-    [prefsData appendString:@"\n"];
-    [prefsData appendString:[[NSNumber numberWithInt:[mainWindow frame].size.width] stringValue]];
-    [prefsData appendString:@"\n"];
-    [prefsData appendString:[[NSNumber numberWithInt:[mainWindow frame].size.height - 22] stringValue]];
-    [prefsData appendString:@"\n"];
-    [prefsData appendString:[[NSNumber numberWithInt:[prefs2412Radio selectedRow]] stringValue]];
-    [prefsData appendString:@"\n"];
-    if ([prefsAskDeleteJob state])          [prefsData appendString:@"Yes\n"];
-    else                                    [prefsData appendString:@"No\n"];
-    if ([prefsAskDeleteSession state])      [prefsData appendString:@"Yes\n"];
-    else                                    [prefsData appendString:@"No\n"];
-    [prefsData appendString:[prefsAutoSaveTime stringValue]];
-    [prefsData appendString:@"\n"];
-    [prefsData appendString:[prefsAutoDeleteSetting stringValue]];
-    [prefsData appendString:@"\n"];
-    [prefsData appendString:[prefsMonetaryUnit stringValue]];
-    [prefsData appendString:@"\n"];
-    [prefsData appendString:[[NSNumber numberWithInt:[prefsUpdateEveryRadio selectedRow]] stringValue]];
-    [prefsData appendString:@"\n\n"];
-    if ([prefsJobDisplayNumber state])      [prefsData appendString:@"Yes\n"];
-    else                                    [prefsData appendString:@"No\n"];
-    if ([prefsJobDisplayName state])        [prefsData appendString:@"Yes\n"];
-    else                                    [prefsData appendString:@"No\n"];
-    if ([prefsJobDisplayClient state])      [prefsData appendString:@"Yes\n"];
-    else                                    [prefsData appendString:@"No\n"];
-    if ([prefsJobDisplayRate state])        [prefsData appendString:@"Yes\n"];
-    else                                    [prefsData appendString:@"No\n"];
-    if ([prefsJobDisplayTime state])        [prefsData appendString:@"Yes\n"];
-    else                                    [prefsData appendString:@"No\n"];
-    if ([prefsJobDisplayCharges state])     [prefsData appendString:@"Yes\n\n"];
-    else                                    [prefsData appendString:@"No\n\n"];
-    if ([prefsSessionDisplayNumber state])  [prefsData appendString:@"Yes\n"];
-    else                                    [prefsData appendString:@"No\n"];
-    if ([prefsSessionDisplaySDate state])   [prefsData appendString:@"Yes\n"];
-    else                                    [prefsData appendString:@"No\n"];
-    if ([prefsSessionDisplaySTime state])   [prefsData appendString:@"Yes\n"];
-    else                                    [prefsData appendString:@"No\n"];
-    if ([prefsSessionDisplayEDate state])   [prefsData appendString:@"Yes\n"];
-    else                                    [prefsData appendString:@"No\n"];
-    if ([prefsSessionDisplayETime state])   [prefsData appendString:@"Yes\n"];
-    else                                    [prefsData appendString:@"No\n"];
-    if ([prefsSessionDisplayPause state])   [prefsData appendString:@"Yes\n"];
-    else                                    [prefsData appendString:@"No\n"];
-    if ([prefsSessionDisplayTotalTime state])[prefsData appendString:@"Yes\n"];
-    else                                    [prefsData appendString:@"No\n"];
-    if ([prefsSessionDisplayCharges state]) [prefsData appendString:@"Yes\n"];
-    else                                    [prefsData appendString:@"No\n"];
-    if ([prefsSessionDisplaySummary state]) [prefsData appendString:@"Yes\n\n"];
-    else                                    [prefsData appendString:@"No\n\n"];
-    if ([prefsMenuPauseButton state])       [prefsData appendString:@"Yes\n"];
-    else                                    [prefsData appendString:@"No\n"];
-    if ([prefsMenuDisplayButton state])     [prefsData appendString:@"Yes\n"];
-    else                                    [prefsData appendString:@"No\n"];
-    if ([prefsMenuDisplayList state])       [prefsData appendString:@"Yes\n"];
-    else                                    [prefsData appendString:@"No\n"];
-    if ([prefsMenuDisplayTime state])       [prefsData appendString:@"Yes\n"];
-    else                                    [prefsData appendString:@"No\n"];
-    if ([prefsMenuDisplayCharges state])    [prefsData appendString:@"Yes\n"];
-    else                                    [prefsData appendString:@"No\n"];
-    
-    [prefsData appendString:@"\n"];
-    [prefsData appendString:[prefsInvoiceIndex stringValue]];
-    [prefsData appendString:@"\n"];
-    [prefsData appendString:[prefsInvoiceIndexHeader stringValue]];
-    [prefsData appendString:@"\n"];
-    [prefsData appendString:[prefsInvoiceIndexLink stringValue]];
-    [prefsData appendString:@"\n"];
-    [prefsData appendString:[prefsInvoiceTitle stringValue]];
-    [prefsData appendString:@"\n"];
-    [prefsData appendString:[prefsInvoiceHeader stringValue]];
-    [prefsData appendString:@"\n"];
-    [prefsData appendString:[[NSNumber numberWithInt:[prefsInvoiceBodyFont indexOfSelectedItem]] stringValue]];
-    [prefsData appendString:@"\n"];
-    [prefsData appendString:[[NSNumber numberWithInt:[prefsInvoiceHeaderFont indexOfSelectedItem]] stringValue]];
-    [prefsData appendString:@"\n"];
-    [prefsData appendString:[[NSNumber numberWithInt:[prefsInvoiceSize intValue]] stringValue]];
-    [prefsData appendString:@"\n"];
-    
-    NSBundle *bundle = [NSBundle mainBundle];
-    NSMutableString *dataPath = [[[NSMutableString alloc] init] autorelease];
-    [dataPath setString:[bundle pathForResource:@"minus" ofType:@"gif"]];
-    [dataPath deleteCharactersInRange:NSMakeRange([dataPath length] - 9, 9)];
-    [dataPath appendString:@"prefs.txt"];
-    [prefsData writeToFile:dataPath atomically:NO];
-}
 
 - (int)getHighestJobNumber
 {
@@ -1926,43 +1669,6 @@
     else {NSBeep(); [editSessionStartDate selectText:self];}
 }
 
-//PrefsWindow
-- (IBAction)prefsJobTableChange:(id)sender
-{
-    [self buildJobTable];
-}
-
-- (IBAction)prefsMenuChanged:(id)sender
-{
-    [self buildStatusItem];
-    [self updateMenuBarData];
-    [self updateMenuBarButtons];
-}
-
-- (IBAction)prefsSave:(id)sender
-{
-    [self savePrefs];
-    [prefsWindow orderOut:nil];
-    [prefsWindow center];
-}
-
-- (IBAction)prefsSessionTableChange:(id)sender
-{
-    [self buildSessionTable];
-}
-
-- (IBAction)prefsUpdateTimeChange:(id)sender
-{
-    [jobTable reloadData];
-    [sessionTable reloadData];
-}
-
-- (IBAction)statusItemChanged:(id)sender
-{
-    [self buildStatusItem];
-    [self updateMenuBarData];
-    [self updateMenuBarButtons];
-}
 
 //***MenuItems***
 - (IBAction)menuPauseAllJobs:(id)sender

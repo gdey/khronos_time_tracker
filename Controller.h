@@ -97,44 +97,6 @@
     IBOutlet id editSessionStartDate;
     IBOutlet id editSessionStartTime;
 	
-	//Prefs
-	IBOutlet id prefs2412Radio;
-	IBOutlet id prefsAskDeleteJob;
-	IBOutlet id prefsAskDeleteSession;
-	IBOutlet id prefsAutoDeleteSetting;
-    IBOutlet id prefsAutoSaveTime;
-	IBOutlet id prefsInvoiceBodyFont;
-	IBOutlet id prefsInvoiceHeaderFont;
-	IBOutlet id prefsInvoiceSize;
-	IBOutlet id prefsInvoiceTitle;
-	IBOutlet id prefsInvoiceHeader;
-	IBOutlet id prefsInvoiceIndex;
-	IBOutlet id prefsInvoiceIndexHeader;
-	IBOutlet id prefsInvoiceIndexLink;
-    IBOutlet id prefsJobDisplayCharges;
-    IBOutlet id prefsJobDisplayClient;
-    IBOutlet id prefsJobDisplayName;
-    IBOutlet id prefsJobDisplayNumber;
-	IBOutlet id prefsJobDisplayRate;
-    IBOutlet id prefsJobDisplayTime;
-	IBOutlet id prefsMenuAlertField;
-    IBOutlet id prefsMenuDisplayButton;
-	IBOutlet id prefsMenuPauseButton;
-    IBOutlet id prefsMenuDisplayCharges;
-    IBOutlet id prefsMenuDisplayList;
-    IBOutlet id prefsMenuDisplayTime;
-    IBOutlet id prefsMonetaryUnit;
-    IBOutlet id prefsSessionDisplayCharges;
-    IBOutlet id prefsSessionDisplayEDate;
-    IBOutlet id prefsSessionDisplayETime;
-    IBOutlet id prefsSessionDisplayNumber;
-    IBOutlet id prefsSessionDisplaySDate;
-    IBOutlet id prefsSessionDisplaySTime;
-	IBOutlet id prefsSessionDisplayPause;
-    IBOutlet id prefsSessionDisplaySummary;
-    IBOutlet id prefsSessionDisplayTotalTime;
-    IBOutlet id prefsUpdateEveryRadio;
-    IBOutlet id prefsWindow;
 	
 	//Text Storage
 	IBOutlet id textArr;
@@ -198,7 +160,7 @@
 - (void)createNewJob:(NSString *)name client:(NSString *)client rate:(double)rate;
 - (void)createNewSession:(cuDateTime *)startDateTime endDateTime:(cuDateTime *)endDateTime job:(int)whichJob active:(BOOL)active;
 - (void)computeJobTime:(int)job;
-- (void)loadPrefsFromFile;
+// - (void)loadPrefsFromFile;
 - (void)updateLoop;
 - (void)updateMenuBarData;
 - (void)updateMenuBarJobList;
@@ -206,7 +168,7 @@
 - (void)jobMenuListSelectionChanged:(id)sender;
 - (void)addJobToMenuList:(NSString *)jobName;
 - (void)saveLoop;
-- (void)savePrefs;
+// - (void)savePrefs;
 - (void)buildJobTable;
 - (void)buildSessionTable;
 
@@ -257,14 +219,6 @@
 - (IBAction)editSessionCancel:(id)sender;
 - (IBAction)editSessionSave:(id)sender;
 - (void)editSession;
-
-//PrefsWindow
-- (IBAction)prefsJobTableChange:(id)sender;
-- (IBAction)prefsMenuChanged:(id)sender;
-- (IBAction)prefsSave:(id)sender;
-- (IBAction)prefsSessionTableChange:(id)sender;
-- (IBAction)prefsUpdateTimeChange:(id)sender;
-- (IBAction)statusItemChanged:(id)sender;
 
 //***MenuItems***
 - (IBAction)menuPauseAllJobs:(id)sender;

@@ -10,16 +10,15 @@
 	<integer>2</integer>
 	<key>IBOpenObjects</key>
 	<array>
-		<integer>626</integer>
-		<integer>308</integer>
-		<integer>282</integer>
-		<integer>271</integer>
-		<integer>1139</integer>
-		<integer>204</integer>
-		<integer>57</integer>
 		<integer>206</integer>
-		<integer>287</integer>
+		<integer>308</integer>
+		<integer>271</integer>
+		<integer>282</integer>
 		<integer>509</integer>
+		<integer>57</integer>
+		<integer>626</integer>
+		<integer>287</integer>
+		<integer>204</integer>
 	</array>
 	<key>IBSystem Version</key>
 	<string>9E17</string>
