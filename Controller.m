@@ -46,6 +46,11 @@
            selector:@selector(handleTableChanges:)
                name:CUPreferencesTableNotification 
              object:nil];
+    // Get notifications for Preferences Reset.
+    [nc addObserver:self
+           selector:@selector(handlePreferencesReset:)
+               name:CUPreferencesResetNotification
+             object:nil];
     
      [self loadPrefsFromFile];
     
@@ -152,15 +157,20 @@
     [mainWindow makeKeyAndOrderFront:nil];
 }
 
+#pragma mark Preferences Notification Handlers
 -(void) handleTableChanges:(NSNotification *)note
 {
     NSLog(@"Recieved Notifications %@",note);
     NSDictionary *userInfo = [note userInfo];
     if([[userInfo objectForKey:CUPreferencesTableUserInfoTableName] isEqual:CUPreferencesProjectDisplay]) {
-        NSLog(@"Update the Project Table.");
+        NSLog(@"Updating the Project Table.");
         [self buildJobTable];
     }
-
+    if([[userInfo objectForKey:CUPreferencesTableUserInfoTableName] isEqual:CUPreferencesSessionDisplay]) {
+        NSLog(@"Updating the Session Table.");
+        [self buildSessionTable];
+    }
+    
     
 }
 - (void) handleClockSettingsChanged:(NSNotification *)note
@@ -170,6 +180,14 @@
     [sessionTable reloadData];
     
 }
+
+- (void)handlePreferencesReset:(NSNotification *)note
+{
+    [self buildJobTable];
+    [self buildSessionTable];
+}
+
+
 - (void)applicationWillTerminate:(NSNotification *)notification
 {
     [self saveLoop];
@@ -426,17 +444,36 @@
     }
     
     //Add Columns
-                                                [sessionTable addTableColumn:[tableGenerator createSessionActiveColumn:[textSessionActive stringValue]]];
-    if ([prefsSessionDisplayNumber state])      [sessionTable addTableColumn:[tableGenerator createSessionNumberColumn:[textSessionNumber stringValue]]];
-    if ([prefsSessionDisplaySDate state])       [sessionTable addTableColumn:[tableGenerator createSessionSDateColumn:[textSessionDate stringValue]]];
-    if ([prefsSessionDisplaySTime state])       [sessionTable addTableColumn:[tableGenerator createSessionSTimeColumn:[textSessionStart stringValue]]];
-    if ([prefsSessionDisplayEDate state])       [sessionTable addTableColumn:[tableGenerator createSessionEDateColumn:[textSessionEndDate stringValue]]];
-    if ([prefsSessionDisplayETime state])       [sessionTable addTableColumn:[tableGenerator createSessionETimeColumn:[textSessionEnd stringValue]]];
-    if ([prefsSessionDisplayPause state])       [sessionTable addTableColumn:[tableGenerator createSessionPauseTimeColumn:[textPauses stringValue]]];
-    if ([prefsSessionDisplayTotalTime state])   [sessionTable addTableColumn:[tableGenerator createSessionTotalTimeColumn:[textSessionTime stringValue]]];
-    if ([prefsSessionDisplayCharges state])     [sessionTable addTableColumn:[tableGenerator createSessionChargesColumn:[textSessionCharges stringValue]]];
-    if ([prefsSessionDisplaySummary state])     [sessionTable addTableColumn:[tableGenerator createSessionSummaryColumn:[textSessionSummary stringValue]]];
-
+    [sessionTable addTableColumn:[tableGenerator createSessionActiveColumn:
+                                  [main localizedStringForKey:@"ActiveHeader" value:@"..." table:@"SessionTable"]]];
+    if ([preferences displayForTable:CUPreferencesSessionDisplay column:CUPreferencesSessionDisplayNumber])
+        [sessionTable addTableColumn:[tableGenerator createSessionNumberColumn:
+                                      [main localizedStringForKey:@"NumberHeader" value:@"#" table:@"SessionTable"]]];
+    if ([preferences displayForTable:CUPreferencesSessionDisplay column:CUPreferencesSessionDisplayStartDate])
+        [sessionTable addTableColumn:[tableGenerator createSessionSDateColumn:
+                                      [main localizedStringForKey:@"StartDateHeader" value:@"Date" table:@"SessionTable"]]];
+    if ([preferences displayForTable:CUPreferencesSessionDisplay column:CUPreferencesSessionDisplayStartTime])
+        [sessionTable addTableColumn:[tableGenerator createSessionETimeColumn:
+                                      [main localizedStringForKey:@"StartTimeHeader" value:@"Time" table:@"SessionTable"]]];
+    if ([preferences displayForTable:CUPreferencesSessionDisplay column:CUPreferencesSessionDisplayEndDate])
+        [sessionTable addTableColumn:[tableGenerator createSessionEDateColumn:
+                                      [main localizedStringForKey:@"EndDateHeader" value:@"End Date" table:@"SessionTable"]]];
+    if ([preferences displayForTable:CUPreferencesSessionDisplay column:CUPreferencesSessionDisplayEndTime])
+        [sessionTable addTableColumn:[tableGenerator createSessionETimeColumn:
+                                      [main localizedStringForKey:@"EndTimeHeader" value:@"End Time" table:@"SessionTable"]]];
+    if ([preferences displayForTable:CUPreferencesSessionDisplay column:CUPreferencesSessionDisplayPauseTime])
+        [sessionTable addTableColumn:[tableGenerator createSessionPauseTimeColumn:
+                                      [main localizedStringForKey:@"PauseTimeHeader" value:@"Pauses" table:@"SessionTable"]]];
+    if ([preferences displayForTable:CUPreferencesSessionDisplay column:CUPreferencesSessionDisplayTotalTime])
+        [sessionTable addTableColumn:[tableGenerator createSessionTotalTimeColumn:
+                                      [main localizedStringForKey:@"TotalTimeHeader" value:@"Total Time" table:@"SessionTable"]]];
+    if ([preferences displayForTable:CUPreferencesSessionDisplay column:CUPreferencesSessionDisplayCharges])
+        [sessionTable addTableColumn:[tableGenerator createSessionChargesColumn:
+                                      [main localizedStringForKey:@"ChargesHeader" value:@"Charges" table:@"SessionTable"]]];
+    if ([preferences displayForTable:CUPreferencesSessionDisplay column:CUPreferencesSessionDisplaySummary])
+        [sessionTable addTableColumn:[tableGenerator createSessionSummaryColumn:
+                                      [main localizedStringForKey:@"SummaryHeader" value:@"Summary" table:@"SessionTable"]]];
+        
     [sessionTable reloadData];
 }
 

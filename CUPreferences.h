@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+extern NSString *const CUPreferencesResetNotification;
 extern NSString *const CUPreferencesAskDeleteJob;
 extern NSString *const CUPreferencesAskDeleteSession;
 extern NSString *const CUPreferencesAutoSaveTime;

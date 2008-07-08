@@ -8,6 +8,7 @@
 
 #import "CUPreferences.h"
 
+NSString *const CUPreferencesResetNotification   = @"CUPreferencesResetNotification";
 // These are the General Preferences.
 NSString *const CUPreferencesAskDeleteProject    = @"Delete Project";
 NSString *const CUPreferencesAskDeleteSession    = @"Delete Session" ;
@@ -97,9 +98,7 @@ NSString *const CUPreferencesInvoiceBodyFontChangedNotification     = @"CUPrefer
     [defaults removeObjectForKey:CUPreferencesMenuDisplay];     
     NSLog(@"Sending out notifications.");
     NSLog(@"Sending notification %@",CUPreferencesClockSettingNotification);
-    [nc postNotificationName:CUPreferencesClockSettingNotification object:self];
-    [nc postNotificationName:CUPreferencesUpdateTimeNotification object:self];
-    [nc postNotificationName:CUPreferencesTimeSettingsChangedNotification object:self];
+    [nc postNotificationName:CUPreferencesResetNotification object:self];
 
 }
 

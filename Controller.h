@@ -289,5 +289,6 @@
 - (IBAction)showPreferencesPanel:(id)sender;
 - (void) handleClockSettingsChanged:(NSNotification *)note;
 - (void) handleTableChanges:(NSNotification *)note;
+- (void)handlePreferencesReset:(NSNotification *)note;
 
 @end
