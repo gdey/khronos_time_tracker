@@ -53,13 +53,7 @@
              object:nil];
     
     
-    if (floor(NSAppKitVersionNumber) <= NSAppKitVersionNumber10_2)
-    {
-        [prefsMenuDisplayList setState:NO];
-        [prefsMenuDisplayList setEnabled:NO];
-        [prefsMenuAlertField setStringValue:[textMenuDisable stringValue]];
-    }
-   // FIXME: Need to save the window size and placement (gdey) 
+    // FIXME: Need to save the window size and placement (gdey) 
    // [mainWindow setFrameOrigin:NSMakePoint(windowY, windowX)];
    // [mainWindow setContentSize:NSMakeSize(windowWidth, windowHeight)];
     
@@ -71,7 +65,6 @@
     
     if (firstLaunch)    [mainWindow center];
     
-    [prefsWindow center];
     
     jobData             =   [[NSMutableArray alloc] init];
     tableActive         =   [NSImage imageNamed:@"jobActive"];
@@ -364,7 +357,7 @@
     [printClientName setStringValue:[[jobData objectAtIndex:[jobTable selectedRow]] objectForKey:@"clientName"]];
     
     NSMutableString *hourlyRateFormatted = [[NSMutableString alloc] init];
-    [hourlyRateFormatted appendString:[prefsMonetaryUnit stringValue]];
+    [hourlyRateFormatted appendString:[preferences monetaryUnit]];
     [hourlyRateFormatted appendString:[[[jobData objectAtIndex:[jobTable selectedRow]] objectForKey:@"hourlyRate"] stringValue]];
     [printHourlyRate setStringValue:hourlyRateFormatted];
     
@@ -399,7 +392,7 @@
     [chargeNumberString setString:[self truncateChargeString:chargeNumberString]];
                 
     NSMutableString *tempChargesString = [[NSMutableString alloc] init];
-    [tempChargesString appendString:[prefsMonetaryUnit stringValue]];
+    [tempChargesString appendString:[preferences monetaryUnit]];
     [tempChargesString appendString:chargeNumberString];
                 
     [printTotalCharges setStringValue:tempChargesString];
@@ -474,7 +467,7 @@
 - (void)updateLoop
 {
     saveTimer++;
-    if (saveTimer > [prefsAutoSaveTime intValue] * 60)      [self saveLoop];
+    if (saveTimer > [preferences autoSaveTime] * 60)      [self saveLoop];
     
     int i = 0;
     int count = [jobData count];
@@ -546,7 +539,7 @@
     {
         id tempMenuTime = [[jobData objectAtIndex:[jobTable selectedRow]] objectForKey:@"jobTimeLogged"];
         
-        if ([prefsMenuDisplayTime state])
+        if ([preferences displayForTable:CUPreferencesMenuDisplay column:CUPreferencesMenuDisplayTotalTime])
         {
             if ([preferences updateTimeEvery] == 0)    [menuTimeDisplay setTitle:[tempMenuTime getTimeString]];
             if ([preferences updateTimeEvery] == 1)    [menuTimeDisplay setTitle:[tempMenuTime getTimeString:NO]];
@@ -554,7 +547,7 @@
             if ([preferences updateTimeEvery] == 30)   [menuTimeDisplay setTitle:[tempMenuTime getFormattedTimeString:@"half"]];
             if ([preferences updateTimeEvery] == 60)   [menuTimeDisplay setTitle:[tempMenuTime getFormattedTimeString:@"hour"]];
         }
-        if ([prefsMenuDisplayCharges state])
+        if ([preferences displayForTable:CUPreferencesMenuDisplay column:CUPreferencesMenuDisplayCharges])
         {
             NSNumber *rate = [[jobData objectAtIndex:[jobTable selectedRow]] objectForKey:@"hourlyRate"];
                 
@@ -862,7 +855,7 @@
                 [chargeNumberString setString:[self truncateChargeString:chargeNumberString]];
                 
                 NSMutableString *tempChargesString = [[[NSMutableString alloc] init] autorelease];
-                [tempChargesString appendString:[prefsMonetaryUnit stringValue]];
+                [tempChargesString appendString:[preferences monetaryUnit]];
                 [tempChargesString appendString:chargeNumberString];
             
                 theValue = tempChargesString;
@@ -1081,7 +1074,8 @@
             cuDateTime *tempStart = [[[[jobData objectAtIndex:[jobTable selectedRow]] objectForKey:@"sessionList"] objectAtIndex:count - 1] objectForKey:@"startDateTime"];
             cuDateTime *tempEnd = [[[[jobData objectAtIndex:[jobTable selectedRow]] objectForKey:@"sessionList"] objectAtIndex:count - 1] objectForKey:@"endDateTime"];
             
-            if ([[tempStart getTimeInterval:tempEnd] getHour] < 1 && [[tempStart getTimeInterval:tempEnd] getMinute] < [prefsAutoDeleteSetting intValue])
+            // TODO: Should this autoSaveTime and not autoDeleteSettings?
+            if ([[tempStart getTimeInterval:tempEnd] getHour] < 1 && [[tempStart getTimeInterval:tempEnd] getMinute] < [preferences autoDeleteSettings])
             {
                 [[[jobData objectAtIndex:[jobTable selectedRow]] objectForKey:@"sessionList"] removeObjectAtIndex:count - 1];
                 [self computeJobTime:[jobTable selectedRow]];

@@ -91,6 +91,7 @@ extern NSString *const CUPreferencesInvoiceBodyFontChangedNotification;
 - (void) setAskDeleteProject:(BOOL)value;
 - (BOOL) askDeleteSession;
 - (void) setAskDeleteSession:(BOOL)value;
+// Should this return an int?
 - (BOOL) autoSaveTime;
 - (void) setAutoSaveTime:(BOOL)value;
 - (BOOL) autoDeleteSettings;
