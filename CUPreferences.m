@@ -18,8 +18,9 @@ NSString *const CUPreferencesClockSetting        = @"24 Hour Clock";
 NSString *const CUPreferencesUpdateTime          = @"Update time";
 NSString *const CUPreferencesFirstLaunch         = @"First Launch";
 NSString *const CUPreferencesTimeSettingsChangedNotification = @"CUTimeSettingsChangedNotification";
-NSString *const CUPreferencesClockSettingNotification = @"CUClockChangedNotification";
-NSString *const CUPreferencesUpdateTimeNotification   = @"CUUpdateTimeNotification";
+NSString *const CUPreferencesClockSettingNotification        = @"CUClockChangedNotification";
+NSString *const CUPreferencesUpdateTimeNotification          = @"CUUpdateTimeNotification";
+NSString *const CUPreferencesMonetaryUnitChangedNotification = @"CUPreferencesMonetaryUnitChangedNotification";
 
 
 /*** General Table info ***/
@@ -68,7 +69,13 @@ NSString *const CUPreferencesInvoiceTitle          = @"Title";
 NSString *const CUPreferencesInvoiceHeading        = @"Heading";
 NSString *const CUPreferencesInvoiceBodyFont       = @"Body Font";
 NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
-
+NSString *const CUPreferencesInvoiceIndexTitleChangedNotification   = @"CUPreferencesInvoiceIndexTitleChangedNotification";
+NSString *const CUPreferencesInvoiceIndexHeadingChangedNotification = @"CUPreferencesInvoiceIndexHeadingChangedNotification";
+NSString *const CUPreferencesInvoiceLinkHelpChangedNotification     = @"CUPreferencesInvoiceLinkHelpChangedNotification";
+NSString *const CUPreferencesInvoiceTitleChangedNotification        = @"CUPreferencesInvoiceTitleChangedNotification";
+NSString *const CUPreferencesInvoiceHeadingChangedNotification      = @"CUPreferencesInvoiceHeadingChangedNotification";
+NSString *const CUPreferencesInvoiceHeadingFontChangedNotification  = @"CUPreferencesInvoiceHeadingFontChangedNotification";
+NSString *const CUPreferencesInvoiceBodyFontChangedNotification     = @"CUPreferencesInvoiceBodyFontChangedNotification";
 
 @implementation CUPreferences
 
@@ -313,6 +320,7 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
 - (void) setMonetaryUnit:(NSString *)unit
 {
     [[NSUserDefaults standardUserDefaults] setObject:unit  forKey:CUPreferencesMonetaryUnit];    
+    [[NSNotificationCenter defaultCenter] postNotificationName:CUPreferencesMonetaryUnitChangedNotification object:self];
 }
 
 - (BOOL) firstLaunch
@@ -350,6 +358,7 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
 - (void) setInvoiceIndexTitle:(NSString *)title
 {
     [self setInvoiceValueForColumn:CUPreferencesInvoiceIndexTitle value:title];
+    [[NSNotificationCenter defaultCenter] postNotificationName:CUPreferencesInvoiceIndexTitleChangedNotification object:self];
 }
     
 - (NSString *)invoiceIndexHeading
@@ -359,6 +368,7 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
 - (void) setInvoiceIndexHeading:(NSString *)heading
 {
     [self setInvoiceValueForColumn:CUPreferencesInvoiceIndexHeading value:heading];
+    [[NSNotificationCenter defaultCenter] postNotificationName:CUPreferencesInvoiceIndexHeadingChangedNotification object:self];
 }
 - (NSString *)invoiceLinkHelp
 {
@@ -367,6 +377,7 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
 - (void) setInvoiceLinkHelp:(NSString *)linkHelp
 {
     [self setInvoiceValueForColumn:CUPreferencesInvoiceLinkHelp value:linkHelp];
+    [[NSNotificationCenter defaultCenter] postNotificationName:CUPreferencesInvoiceLinkHelpChangedNotification object:self];
 }
 - (NSString *)invoiceTitle
 {
@@ -375,6 +386,7 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
 - (void) setInvoiceTitle:(NSString  *)title
 {
     [self setInvoiceValueForColumn:CUPreferencesInvoiceTitle value:title];
+    [[NSNotificationCenter defaultCenter] postNotificationName:CUPreferencesInvoiceTitleChangedNotification object:self];
 }
 - (NSString *)invoiceHeading
 {
@@ -383,6 +395,7 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
 - (void)setInvoiceHeading:(NSString *)heading
 {
     [self setInvoiceValueForColumn:CUPreferencesInvoiceHeading value:heading];
+    [[NSNotificationCenter defaultCenter] postNotificationName:CUPreferencesInvoiceHeadingChangedNotification object:self];
 }
 - (NSFont *)invoiceHeadingFont
 {
@@ -393,6 +406,7 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
 {
     NSData *fontAsData = [NSKeyedArchiver archivedDataWithRootObject:aFont];
     [self setInvoiceValueForColumn:CUPreferencesInvoiceHeadingFont value:fontAsData];
+    [[NSNotificationCenter defaultCenter] postNotificationName:CUPreferencesInvoiceHeadingFontChangedNotification object:self];
 }
 - (NSFont *)invoiceBodyFont
 {
@@ -403,6 +417,7 @@ NSString *const CUPreferencesInvoiceHeadingFont    = @"Headings Font";
 {
     NSData *fontAsData = [NSKeyedArchiver archivedDataWithRootObject:aFont];
     [self setInvoiceValueForColumn:CUPreferencesInvoiceBodyFont value:fontAsData];
+    [[NSNotificationCenter defaultCenter] postNotificationName:CUPreferencesInvoiceBodyFontChangedNotification object:self];
 }
 
 @end

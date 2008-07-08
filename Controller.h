@@ -189,6 +189,9 @@
     // New Preferences Controller
     CUPreferenceController *preferencesController;
     CUPreferences *preferences;
+    
+    // Main Bundle
+    NSBundle *main;
 }
 //***Main Methods***
 - (void)applicationWillTerminate:(NSNotification *)notification;
@@ -285,5 +288,6 @@
 /***** Preferences *****/
 - (IBAction)showPreferencesPanel:(id)sender;
 - (void) handleClockSettingsChanged:(NSNotification *)note;
+- (void) handleTableChanges:(NSNotification *)note;
 
 @end

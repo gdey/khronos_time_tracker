@@ -63,6 +63,15 @@ extern NSString *const CUPreferencesInvoiceHeading;
 extern NSString *const CUPreferencesInvoiceBodyFont;
 extern NSString *const CUPreferencesInvoiceHeadingFont;
 
+
+extern NSString *const CUPreferencesInvoiceIndexTitleChangedNotification;  
+extern NSString *const CUPreferencesInvoiceIndexHeadingChangedNotification;
+extern NSString *const CUPreferencesInvoiceLinkHelpChangedNotification;    
+extern NSString *const CUPreferencesInvoiceTitleChangedNotification;       
+extern NSString *const CUPreferencesInvoiceHeadingChangedNotification;
+extern NSString *const CUPreferencesInvoiceHeadingFontChangedNotification;
+extern NSString *const CUPreferencesInvoiceBodyFontChangedNotification;    
+
 @interface CUPreferences : NSObject {
 
 }

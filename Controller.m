@@ -15,6 +15,7 @@
 {
     [preferences release];
     [preferencesController release];
+    [main release];
     // Remove Notifications.
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc removeObserver:self];
@@ -23,15 +24,27 @@
 - (void)awakeFromNib
 {
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    // Setup the Main Variable.
+    if(!main)
+        main = [NSBundle mainBundle];
     
+    // Setup Preferences model.
     if(!preferences)
         preferences = [[CUPreferences init] alloc];
     firstLaunch = [preferences firstLaunch];
     
+    
     // Attach Notifications
+    // Get notifications for clock setting changes.
     [nc addObserver:self
            selector:@selector(handleClockSettingsChanged:)
                name:CUPreferencesTimeSettingsChangedNotification
+             object:nil];
+    
+    // Get notifications for table changes.
+    [nc addObserver:self
+           selector:@selector(handleTableChanges:)
+               name:CUPreferencesTableNotification 
              object:nil];
     
      [self loadPrefsFromFile];
@@ -139,6 +152,17 @@
     [mainWindow makeKeyAndOrderFront:nil];
 }
 
+-(void) handleTableChanges:(NSNotification *)note
+{
+    NSLog(@"Recieved Notifications %@",note);
+    NSDictionary *userInfo = [note userInfo];
+    if([[userInfo objectForKey:CUPreferencesTableUserInfoTableName] isEqual:CUPreferencesProjectDisplay]) {
+        NSLog(@"Update the Project Table.");
+        [self buildJobTable];
+    }
+
+    
+}
 - (void) handleClockSettingsChanged:(NSNotification *)note
 {
     NSLog(@"Recieved Notification %@",note);
@@ -372,13 +396,20 @@
     }
     
     //Add Columns
-                                            [jobTable addTableColumn:[tableGenerator createJobActiveColumn:[textJobActive stringValue]]];
-    if ([prefsJobDisplayNumber state])      [jobTable addTableColumn:[tableGenerator createJobNumberColumn:[textJobNumber stringValue]]];
-    if ([prefsJobDisplayName state])        [jobTable addTableColumn:[tableGenerator createJobNameColumn:[textJobName stringValue]]];
-    if ([prefsJobDisplayClient state])      [jobTable addTableColumn:[tableGenerator createJobClientColumn:[textClientName stringValue]]];
-    if ([prefsJobDisplayRate state])        [jobTable addTableColumn:[tableGenerator createJobHourlyRateColumn:[textRate stringValue]]];
-    if ([prefsJobDisplayTime state])        [jobTable addTableColumn:[tableGenerator createJobTimeLoggedColumn:[textTimeLogged stringValue]]];
-    if ([prefsJobDisplayCharges state])     [jobTable addTableColumn:[tableGenerator createJobChargesColumn:[textCharges stringValue]]];
+    [jobTable addTableColumn:[tableGenerator createJobActiveColumn:[main localizedStringForKey:@"ActiveHeader" value:@"..." table:@"ProjectTable"]]];
+    if ([preferences  displayForTable:CUPreferencesProjectDisplay column:CUPreferencesProjectDisplayNumber])  
+        [jobTable addTableColumn:[tableGenerator createJobNumberColumn:[main localizedStringForKey:@"NumberHeader" value:@"#" table:@"ProjectTable"]]];
+    if ([preferences displayForTable:CUPreferencesProjectDisplay column:CUPreferencesProjectDisplayName])
+        [jobTable addTableColumn:[tableGenerator createJobNameColumn:[main localizedStringForKey:@"NameHeader" value:@"Project" table:@"ProjectTable"]]];
+    if ([preferences displayForTable:CUPreferencesProjectDisplay column:CUPreferencesProjectDisplayClient])
+        [jobTable addTableColumn:[tableGenerator createJobClientColumn:[main localizedStringForKey:@"ClientHeader" value:@"Client" table:@"ProjectTable"]]];
+    if ([preferences displayForTable:CUPreferencesProjectDisplay column:CUPreferencesProjectDisplayRate])
+        [jobTable addTableColumn:[tableGenerator createJobHourlyRateColumn:[main localizedStringForKey:@"RateHeader" value:@"Rate" table:@"ProjectTable"]]];
+    if ([preferences displayForTable:CUPreferencesProjectDisplay column:CUPreferencesProjectDisplayTime])
+        [jobTable addTableColumn:[tableGenerator createJobTimeLoggedColumn:[main localizedStringForKey:@"TimeHeader" value:@"Time Logged" table:@"ProjectTable"]]];
+    if([preferences displayForTable:CUPreferencesProjectDisplay column:CUPreferencesProjectDisplayCharges])
+        [jobTable addTableColumn:[tableGenerator createJobChargesColumn:[main localizedStringForKey:@"ChargesHeader" value:@"Charges" table:@"ProjectTable"]]];
+
 
     [jobTable reloadData];
 }
