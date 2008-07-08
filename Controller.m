@@ -170,6 +170,10 @@
         NSLog(@"Updating the Session Table.");
         [self buildSessionTable];
     }
+    if([[userInfo objectForKey:CUPreferencesTableUserInfoTableName] isEqual:CUPreferencesMenuDisplay]){
+        NSLog(@"Updating the Menu Table");
+        [self buildStatusItem];
+    }
     
     
 }
@@ -488,16 +492,34 @@
         i--;
     }
     
-    if ([prefsSessionDisplayNumber state])      [printTable addTableColumn:[tableGenerator createSessionNumberColumn:[textSessionNumber stringValue]]];
-    if ([prefsSessionDisplaySDate state])       [printTable addTableColumn:[tableGenerator createSessionSDateColumn:[textSessionDate stringValue]]];
-    if ([prefsSessionDisplaySTime state])       [printTable addTableColumn:[tableGenerator createSessionSTimeColumn:[textSessionStart stringValue]]];
-    if ([prefsSessionDisplayEDate state])       [printTable addTableColumn:[tableGenerator createSessionEDateColumn:[textSessionEndDate stringValue]]];
-    if ([prefsSessionDisplayETime state])       [printTable addTableColumn:[tableGenerator createSessionETimeColumn:[textSessionEnd stringValue]]];
-    if ([prefsSessionDisplayPause state])       [printTable addTableColumn:[tableGenerator createSessionPauseTimeColumn:[textPauses stringValue]]];
-    if ([prefsSessionDisplayTotalTime state])   [printTable addTableColumn:[tableGenerator createSessionTotalTimeColumn:[textSessionTime stringValue]]];
-    if ([prefsSessionDisplayCharges state])     [printTable addTableColumn:[tableGenerator createSessionChargesColumn:[textSessionCharges stringValue]]];
-    if ([prefsSessionDisplaySummary state])     [printTable addTableColumn:[tableGenerator createSessionSummaryColumn:[textSessionSummary stringValue]]];
-
+    if ([preferences displayForTable:CUPreferencesSessionDisplay column:CUPreferencesSessionDisplayNumber])
+        [printTable addTableColumn:[tableGenerator createSessionNumberColumn:
+                                      [main localizedStringForKey:@"NumberHeader" value:@"#" table:@"SessionTable"]]];
+    if ([preferences displayForTable:CUPreferencesSessionDisplay column:CUPreferencesSessionDisplayStartDate])
+        [printTable addTableColumn:[tableGenerator createSessionSDateColumn:
+                                      [main localizedStringForKey:@"StartDateHeader" value:@"Date" table:@"SessionTable"]]];
+    if ([preferences displayForTable:CUPreferencesSessionDisplay column:CUPreferencesSessionDisplayStartTime])
+        [printTable addTableColumn:[tableGenerator createSessionETimeColumn:
+                                      [main localizedStringForKey:@"StartTimeHeader" value:@"Time" table:@"SessionTable"]]];
+    if ([preferences displayForTable:CUPreferencesSessionDisplay column:CUPreferencesSessionDisplayEndDate])
+        [printTable addTableColumn:[tableGenerator createSessionEDateColumn:
+                                      [main localizedStringForKey:@"EndDateHeader" value:@"End Date" table:@"SessionTable"]]];
+    if ([preferences displayForTable:CUPreferencesSessionDisplay column:CUPreferencesSessionDisplayEndTime])
+        [printTable addTableColumn:[tableGenerator createSessionETimeColumn:
+                                      [main localizedStringForKey:@"EndTimeHeader" value:@"End Time" table:@"SessionTable"]]];
+    if ([preferences displayForTable:CUPreferencesSessionDisplay column:CUPreferencesSessionDisplayPauseTime])
+        [printTable addTableColumn:[tableGenerator createSessionPauseTimeColumn:
+                                      [main localizedStringForKey:@"PauseTimeHeader" value:@"Pauses" table:@"SessionTable"]]];
+    if ([preferences displayForTable:CUPreferencesSessionDisplay column:CUPreferencesSessionDisplayTotalTime])
+        [printTable addTableColumn:[tableGenerator createSessionTotalTimeColumn:
+                                      [main localizedStringForKey:@"TotalTimeHeader" value:@"Total Time" table:@"SessionTable"]]];
+    if ([preferences displayForTable:CUPreferencesSessionDisplay column:CUPreferencesSessionDisplayCharges])
+        [printTable addTableColumn:[tableGenerator createSessionChargesColumn:
+                                      [main localizedStringForKey:@"ChargesHeader" value:@"Charges" table:@"SessionTable"]]];
+    if ([preferences displayForTable:CUPreferencesSessionDisplay column:CUPreferencesSessionDisplaySummary])
+        [printTable addTableColumn:[tableGenerator createSessionSummaryColumn:
+                                      [main localizedStringForKey:@"SummaryHeader" value:@"Summary" table:@"SessionTable"]]];
+    
     [printTable reloadData];
 }
 
@@ -514,20 +536,26 @@
     
     cuDateTime *tempTimeLogged = [[cuDateTime alloc] init];
     [tempTimeLogged setValues:[[jobData objectAtIndex:[jobTable selectedRow]] objectForKey:@"jobTimeLogged"]];
-        
-    if ([prefsUpdateEveryRadio selectedRow] == 0)   [printTotalTimeLogged setStringValue:[tempTimeLogged getTimeString]];
-    if ([prefsUpdateEveryRadio selectedRow] == 1)   [printTotalTimeLogged setStringValue:[tempTimeLogged getTimeString:NO]];
-    if ([prefsUpdateEveryRadio selectedRow] == 2)   [printTotalTimeLogged setStringValue:[tempTimeLogged getFormattedTimeString:@"quarter"]];
-    if ([prefsUpdateEveryRadio selectedRow] == 3)   [printTotalTimeLogged setStringValue:[tempTimeLogged getFormattedTimeString:@"half"]];
-    if ([prefsUpdateEveryRadio selectedRow] == 4)   [printTotalTimeLogged setStringValue:[tempTimeLogged getFormattedTimeString:@"hour"]];
+     
+    if ([preferences updateTimeEvery] == 0)    [printTotalTimeLogged setStringValue:[tempTimeLogged getTimeString]];
+    if ([preferences updateTimeEvery] == 1)    [printTotalTimeLogged setStringValue:[tempTimeLogged getTimeString:NO]];
+    if ([preferences updateTimeEvery] == 15)   [printTotalTimeLogged setStringValue:[tempTimeLogged getFormattedTimeString:@"quarter"]];
+    if ([preferences updateTimeEvery] == 30)   [printTotalTimeLogged setStringValue:[tempTimeLogged getFormattedTimeString:@"half"]];
+    if ([preferences updateTimeEvery] == 60)   [printTotalTimeLogged setStringValue:[tempTimeLogged getFormattedTimeString:@"hour"]];
+    
+    if ([preferences updateTimeEvery] == 0)    [printTotalTimeLogged setStringValue:[tempTimeLogged getTimeString]];
+    if ([preferences updateTimeEvery] == 1)    [printTotalTimeLogged setStringValue:[tempTimeLogged getTimeString:NO]];
+    if ([preferences updateTimeEvery] == 15)   [printTotalTimeLogged setStringValue:[tempTimeLogged getFormattedTimeString:@"quarter"]];
+    if ([preferences updateTimeEvery] == 30)   [printTotalTimeLogged setStringValue:[tempTimeLogged getFormattedTimeString:@"half"]];
+    if ([preferences updateTimeEvery] == 60)   [printTotalTimeLogged setStringValue:[tempTimeLogged getFormattedTimeString:@"hour"]];
     
     NSNumber *rate = [[jobData objectAtIndex:[jobTable selectedRow]] objectForKey:@"hourlyRate"];
                 
     NSString *formatterString = @"second";
-    if ([prefsUpdateEveryRadio selectedRow] == 1)   formatterString = @"minute";
-    if ([prefsUpdateEveryRadio selectedRow] == 2)   formatterString = @"quarter";
-    if ([prefsUpdateEveryRadio selectedRow] == 3)   formatterString = @"half";
-    if ([prefsUpdateEveryRadio selectedRow] == 4)   formatterString = @"hour";
+    if ([preferences updateTimeEvery] == 1)    formatterString = @"minute";
+    if ([preferences updateTimeEvery] == 15)   formatterString = @"quarter";
+    if ([preferences updateTimeEvery] == 30)   formatterString = @"half";
+    if ([preferences updateTimeEvery] == 60)   formatterString = @"hour";
                 
     NSMutableString *chargeNumberString = [[NSMutableString alloc] init];
     [chargeNumberString setString:[[NSNumber numberWithDouble:[tempTimeLogged calculateCharges:[rate doubleValue]
@@ -560,7 +588,7 @@
     [[NSStatusBar systemStatusBar] removeStatusItem:menuChargeDisplay];
     [[NSStatusBar systemStatusBar] removeStatusItem:menuTimeDisplay];
     
-    if ([prefsMenuDisplayButton state])
+    if ([preferences displayForTable:CUPreferencesMenuDisplay column:CUPreferencesMenuDisplayRecrodingButton])
     {
         menuStartStopButton = [[[NSStatusBar systemStatusBar] statusItemWithLength:25] retain];
         [menuStartStopButton setHighlightMode:NO];
@@ -570,7 +598,7 @@
         [menuStartStopButton setEnabled:YES];
     }
     
-    if ([prefsMenuPauseButton state])
+    if ([preferences displayForTable:CUPreferencesMenuDisplay column:CUPreferencesMenuDisplayPauseButton])
     {
         menuPauseButton = [[[NSStatusBar systemStatusBar] statusItemWithLength:25] retain];
         [menuPauseButton setHighlightMode:NO];
@@ -580,7 +608,8 @@
         [menuPauseButton setEnabled:YES];
     }
     
-    if ([prefsMenuDisplayList state] && floor(NSAppKitVersionNumber) > NSAppKitVersionNumber10_2)
+    if ([preferences displayForTable:CUPreferencesMenuDisplay column:CUPreferencesMenuDisplayProjectList]
+        && floor(NSAppKitVersionNumber) > NSAppKitVersionNumber10_2)
     {
         jobPullDownMenu = [[[NSStatusBar systemStatusBar] statusItemWithLength:25] retain];
         [jobPullDownMenu setHighlightMode:YES];
@@ -590,7 +619,7 @@
         [jobPullDownMenu setEnabled:YES];
     }
     
-    if ([prefsMenuDisplayTime state])
+    if ([preferences displayForTable:CUPreferencesMenuDisplay column:CUPreferencesMenuDisplayTotalTime])
     {
         menuTimeDisplay = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
         [menuTimeDisplay setHighlightMode:NO];
@@ -598,7 +627,7 @@
         [menuTimeDisplay setEnabled:YES];
     }
     
-    if ([prefsMenuDisplayCharges state])
+    if ([preferences displayForTable:CUPreferencesMenuDisplay column:CUPreferencesMenuDisplayCharges])
     {
         menuChargeDisplay = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
         [menuChargeDisplay setHighlightMode:NO];
@@ -684,21 +713,21 @@
         
         if ([prefsMenuDisplayTime state])
         {
-            if ([prefsUpdateEveryRadio selectedRow] == 0)   [menuTimeDisplay setTitle:[tempMenuTime getTimeString]];
-            if ([prefsUpdateEveryRadio selectedRow] == 1)   [menuTimeDisplay setTitle:[tempMenuTime getTimeString:NO]];
-            if ([prefsUpdateEveryRadio selectedRow] == 2)   [menuTimeDisplay setTitle:[tempMenuTime getFormattedTimeString:@"quarter"]];
-            if ([prefsUpdateEveryRadio selectedRow] == 3)   [menuTimeDisplay setTitle:[tempMenuTime getFormattedTimeString:@"half"]];
-            if ([prefsUpdateEveryRadio selectedRow] == 4)   [menuTimeDisplay setTitle:[tempMenuTime getFormattedTimeString:@"hour"]];
+            if ([preferences updateTimeEvery] == 0)    [menuTimeDisplay setTitle:[tempMenuTime getTimeString]];
+            if ([preferences updateTimeEvery] == 1)    [menuTimeDisplay setTitle:[tempMenuTime getTimeString:NO]];
+            if ([preferences updateTimeEvery] == 15)   [menuTimeDisplay setTitle:[tempMenuTime getFormattedTimeString:@"quarter"]];
+            if ([preferences updateTimeEvery] == 30)   [menuTimeDisplay setTitle:[tempMenuTime getFormattedTimeString:@"half"]];
+            if ([preferences updateTimeEvery] == 60)   [menuTimeDisplay setTitle:[tempMenuTime getFormattedTimeString:@"hour"]];
         }
         if ([prefsMenuDisplayCharges state])
         {
             NSNumber *rate = [[jobData objectAtIndex:[jobTable selectedRow]] objectForKey:@"hourlyRate"];
                 
             NSString *formatterString = @"second";
-            if ([prefsUpdateEveryRadio selectedRow] == 1)   formatterString = @"minute";
-            if ([prefsUpdateEveryRadio selectedRow] == 2)   formatterString = @"quarter";
-            if ([prefsUpdateEveryRadio selectedRow] == 3)   formatterString = @"half";
-            if ([prefsUpdateEveryRadio selectedRow] == 4)   formatterString = @"hour";
+            if ([preferences updateTimeEvery] == 1)    formatterString = @"minute";
+            if ([preferences updateTimeEvery] == 15)   formatterString = @"quarter";
+            if ([preferences updateTimeEvery] == 30)   formatterString = @"half";
+            if ([preferences updateTimeEvery] == 60)   formatterString = @"hour";
             
             NSMutableString *chargeNumberString = [[[NSMutableString alloc] init] autorelease];
             [chargeNumberString setString:[[NSNumber numberWithDouble:[tempMenuTime calculateCharges:[rate doubleValue]
@@ -707,7 +736,7 @@
             [chargeNumberString setString:[self truncateChargeString:chargeNumberString]];
             
             NSMutableString *tempChargesString = [[[NSMutableString alloc] init] autorelease];
-            [tempChargesString appendString:[prefsMonetaryUnit stringValue]];
+            [tempChargesString appendString:[preferences monetaryUnit]];
             [tempChargesString appendString:chargeNumberString];
 
             [menuChargeDisplay setTitle:tempChargesString];
@@ -987,7 +1016,7 @@
         else if ([[tableColumn identifier] isEqualTo:@"hourlyRate"])
         {
             NSMutableString *hourlyRateString = [[[NSMutableString alloc] init] autorelease];
-            [hourlyRateString appendString:[prefsMonetaryUnit stringValue]];
+            [hourlyRateString appendString:[preferences monetaryUnit]];
             [hourlyRateString appendString:[[[jobData objectAtIndex:rowIndex] objectForKey:@"hourlyRate"] stringValue]];
             [hourlyRateString appendString:[textHourSuffix stringValue]];
             theValue = hourlyRateString;
@@ -999,21 +1028,21 @@
         
             if ([[tableColumn identifier] isEqualTo:@"jobTimeLogged"])
             {
-                if ([prefsUpdateEveryRadio selectedRow] == 0)   theValue = [tempTimeLogged getTimeString];
-                if ([prefsUpdateEveryRadio selectedRow] == 1)   theValue = [tempTimeLogged getTimeString:NO];
-                if ([prefsUpdateEveryRadio selectedRow] == 2)   theValue = [tempTimeLogged getFormattedTimeString:@"quarter"];
-                if ([prefsUpdateEveryRadio selectedRow] == 3)   theValue = [tempTimeLogged getFormattedTimeString:@"half"];
-                if ([prefsUpdateEveryRadio selectedRow] == 4)   theValue = [tempTimeLogged getFormattedTimeString:@"hour"];
+                if ([preferences updateTimeEvery] == 0)    theValue = [tempTimeLogged getTimeString];
+                if ([preferences updateTimeEvery] == 1)    theValue = [tempTimeLogged getTimeString:NO];
+                if ([preferences updateTimeEvery] == 15)   theValue = [tempTimeLogged getFormattedTimeString:@"quarter"];
+                if ([preferences updateTimeEvery] == 30)   theValue = [tempTimeLogged getFormattedTimeString:@"half"];
+                if ([preferences updateTimeEvery] == 60)   theValue = [tempTimeLogged getFormattedTimeString:@"hour"];
             }
             else
             {
                 NSNumber *rate = [[jobData objectAtIndex:rowIndex] objectForKey:@"hourlyRate"];
                 
                 NSString *formatterString = @"second";
-                if ([prefsUpdateEveryRadio selectedRow] == 1)   formatterString = @"minute";
-                if ([prefsUpdateEveryRadio selectedRow] == 2)   formatterString = @"quarter";
-                if ([prefsUpdateEveryRadio selectedRow] == 3)   formatterString = @"half";
-                if ([prefsUpdateEveryRadio selectedRow] == 4)   formatterString = @"hour";
+                if ([preferences updateTimeEvery] == 1)     formatterString = @"minute";
+                if ([preferences updateTimeEvery] == 15)    formatterString = @"quarter";
+                if ([preferences updateTimeEvery] == 30)    formatterString = @"half";
+                if ([preferences updateTimeEvery] == 60)    formatterString = @"hour";
                 
                 NSMutableString *chargeNumberString = [[[NSMutableString alloc] init] autorelease];
                 [chargeNumberString setString:[[NSNumber numberWithDouble:[tempTimeLogged calculateCharges:[rate doubleValue]
@@ -1022,7 +1051,7 @@
                 [chargeNumberString setString:[self truncateChargeString:chargeNumberString]];
                 
                 NSMutableString *tempChargesString = [[[NSMutableString alloc] init] autorelease];
-                [tempChargesString appendString:[prefsMonetaryUnit stringValue]];
+                [tempChargesString appendString:[preferences monetaryUnit]];
                 [tempChargesString appendString:chargeNumberString];
                 
                 theValue = tempChargesString;
@@ -1048,7 +1077,7 @@
         }
         else if ([[tableColumn identifier] isEqualTo:@"startTime"])
         {
-            if ([prefs2412Radio selectedRow] == 0)  theValue = [[theRow objectForKey:@"startDateTime"] getTimeString];
+            if ([preferences is24HourClock])  theValue = [[theRow objectForKey:@"startDateTime"] getTimeString];
             else                                    theValue = [[theRow objectForKey:@"startDateTime"] getTwelveHourTimeString];
                 
         }
@@ -1058,7 +1087,7 @@
         }
         else if ([[tableColumn identifier] isEqualTo:@"endTime"])
         {
-            if ([prefs2412Radio selectedRow] == 0)  theValue = [[theRow objectForKey:@"endDateTime"] getTimeString];
+            if ([preferences is24HourClock])  theValue = [[theRow objectForKey:@"endDateTime"] getTimeString];
             else                                    theValue = [[theRow objectForKey:@"endDateTime"] getTwelveHourTimeString];
         }
         else if ([[tableColumn identifier] isEqualTo:@"totalTime"] || [[tableColumn identifier] isEqualTo:@"sessionCharges"])
@@ -1068,10 +1097,10 @@
             [tempInterval setValues:[tempInterval subtractInterval:[theRow objectForKey:@"pauseTime"]]];
             
             NSString *formatterString = @"second";
-            if ([prefsUpdateEveryRadio selectedRow] == 1)   formatterString = @"minute";
-            if ([prefsUpdateEveryRadio selectedRow] == 2)   formatterString = @"quarter";
-            if ([prefsUpdateEveryRadio selectedRow] == 3)   formatterString = @"half";
-            if ([prefsUpdateEveryRadio selectedRow] == 4)   formatterString = @"hour";
+            if ([preferences updateTimeEvery] == 1)    formatterString = @"minute";
+            if ([preferences updateTimeEvery] == 15)   formatterString = @"quarter";
+            if ([preferences updateTimeEvery] == 30)   formatterString = @"half";
+            if ([preferences updateTimeEvery] == 60)   formatterString = @"hour";
             
             if ([[tableColumn identifier] isEqualTo:@"totalTime"])
             {
@@ -1410,7 +1439,7 @@
 
 - (IBAction)deleteJobButton:(id)sender
 {
-    if ([prefsAskDeleteJob state])
+    if ([preferences askDeleteProject])
     {
         int i = NSRunAlertPanel([textDeleteJobShort stringValue], [textDeleteJobLong stringValue], @"Delete Project", @"Cancel", nil);
         
@@ -1453,7 +1482,7 @@
 
 - (IBAction)deleteSessionButton:(id)sender
 {
-    if ([prefsAskDeleteSession state])
+    if ([preferences askDeleteSession])
     {
         int i = NSRunAlertPanel([textDeleteSessionShort stringValue], [textDeleteSessionLong stringValue], @"Delete Session", @"Cancel", nil);
         
@@ -2060,6 +2089,7 @@
 
 - (IBAction)menuHTML:(id)sender
 {
+    /* FIXME: Disabling HTML output till we find a better way. (gdey)
     if ([jobTable selectedRow] != -1)
     {
         NSSavePanel *savePanel = [NSSavePanel savePanel];
@@ -2080,10 +2110,12 @@
         }
     }
     else    NSRunAlertPanel([textBah stringValue], [textSelectJob stringValue], @"OK", nil, nil);
+    */
 }
 
 - (IBAction)menuHTMLAll:(id)sender
 {
+    /* Disabling HTML Output till I find a better way. (gdey)
     NSSavePanel *savePanel = [NSSavePanel savePanel];
     [savePanel setTitle:[textExportTo stringValue]];
     int i = [savePanel runModal];
@@ -2113,10 +2145,12 @@
         [dataPath appendString:@"index.html"];
         [[self generateIndexHTML] writeToFile:dataPath atomically:NO];
     }
+    */
 }
 
 - (NSString *)generateIndexHTML
 {
+    /* FIXME: Use Webkit to generate HTML or something else. (gdey)
     NSMutableString *compiledString = [[[NSMutableString alloc] init] autorelease];
     
     [compiledString appendString:@"<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">"];
@@ -2126,7 +2160,7 @@
     [compiledString appendString:@"<head>"];
     [compiledString appendString:@"\n\n"];
     [compiledString appendString:@"<title>"];
-    [compiledString appendString:[prefsInvoiceIndex stringValue]];
+    [compiledString appendString:[preferences invoiceIndexTitle]];
     [compiledString appendString:@"</title>"];
     [compiledString appendString:@"\n\n"];
     [compiledString appendString:@"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />"];
@@ -2338,10 +2372,13 @@
     [compiledString appendString:@"</div>\n\n</body>\n\n</html>\n\n"];
 
     return compiledString;
+    */
+    return @"";
 }
 
 - (NSString *)generateHTMLForJob:(int)jobNumber
 {
+    /* FIXME: Use Webkit to generate HTML or something else. (gdey)
     NSMutableString *compiledString = [[[NSMutableString alloc] init] autorelease];
     cuDateTime *tempTimeLogged = [[[cuDateTime alloc] init] autorelease];
     [tempTimeLogged setValues:[[jobData objectAtIndex:jobNumber] objectForKey:@"jobTimeLogged"]];
@@ -2652,6 +2689,8 @@
     [compiledString appendString:@"</div>\n\n</body>\n\n</html>\n\n"];
 
     return compiledString;
+    */
+    return @"";
 }
 
 - (IBAction)menuSave:(id)sender
@@ -2673,6 +2712,7 @@
 
 - (IBAction)menuCheckForUpdates:(id)sender
 {
+    
     NSString *versionString = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://khronos.enure.net/version.html"]]; // FIXME: This isn't working $(cstuart)
     if ([versionString length] < 1 || [versionString length] > 5)
     {
