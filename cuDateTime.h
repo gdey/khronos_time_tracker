@@ -22,6 +22,7 @@
 
 //Getting Strings
 - (NSString *)getDateString;
+- (NSString *)getTimeStringFor:(int)minutes;
 - (NSString *)getTimeString;
 - (NSString *)getTimeString:(BOOL)withSeconds;
 - (NSString *)getFormattedTimeString:(NSString *)formatter;

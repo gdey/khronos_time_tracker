@@ -351,6 +351,15 @@
     [printTable reloadData];
 }
 
+- (NSString *)formatterString
+{
+    int time = [preferences updateTimeEvery];
+    if (time == 0)  return @"second";
+    if (time == 15) return @"quarter";
+    if (time == 30) return @"half";
+    if (time == 60) return @"hour";   
+    return nil;
+}
 - (void)updatePrintWindowFields
 {
     [printJobName setStringValue:[[jobData objectAtIndex:[jobTable selectedRow]] objectForKey:@"jobName"]];
@@ -364,26 +373,12 @@
     
     cuDateTime *tempTimeLogged = [[cuDateTime alloc] init];
     [tempTimeLogged setValues:[[jobData objectAtIndex:[jobTable selectedRow]] objectForKey:@"jobTimeLogged"]];
+    [printTotalTimeLogged setStringValue:[tempTimeLogged getTimeStringFor:[preferences updateTimeEvery]]];
      
-    if ([preferences updateTimeEvery] == 0)    [printTotalTimeLogged setStringValue:[tempTimeLogged getTimeString]];
-    if ([preferences updateTimeEvery] == 1)    [printTotalTimeLogged setStringValue:[tempTimeLogged getTimeString:NO]];
-    if ([preferences updateTimeEvery] == 15)   [printTotalTimeLogged setStringValue:[tempTimeLogged getFormattedTimeString:@"quarter"]];
-    if ([preferences updateTimeEvery] == 30)   [printTotalTimeLogged setStringValue:[tempTimeLogged getFormattedTimeString:@"half"]];
-    if ([preferences updateTimeEvery] == 60)   [printTotalTimeLogged setStringValue:[tempTimeLogged getFormattedTimeString:@"hour"]];
-    
-    if ([preferences updateTimeEvery] == 0)    [printTotalTimeLogged setStringValue:[tempTimeLogged getTimeString]];
-    if ([preferences updateTimeEvery] == 1)    [printTotalTimeLogged setStringValue:[tempTimeLogged getTimeString:NO]];
-    if ([preferences updateTimeEvery] == 15)   [printTotalTimeLogged setStringValue:[tempTimeLogged getFormattedTimeString:@"quarter"]];
-    if ([preferences updateTimeEvery] == 30)   [printTotalTimeLogged setStringValue:[tempTimeLogged getFormattedTimeString:@"half"]];
-    if ([preferences updateTimeEvery] == 60)   [printTotalTimeLogged setStringValue:[tempTimeLogged getFormattedTimeString:@"hour"]];
     
     NSNumber *rate = [[jobData objectAtIndex:[jobTable selectedRow]] objectForKey:@"hourlyRate"];
                 
-    NSString *formatterString = @"second";
-    if ([preferences updateTimeEvery] == 1)    formatterString = @"minute";
-    if ([preferences updateTimeEvery] == 15)   formatterString = @"quarter";
-    if ([preferences updateTimeEvery] == 30)   formatterString = @"half";
-    if ([preferences updateTimeEvery] == 60)   formatterString = @"hour";
+    NSString *formatterString = [self formatterString];
                 
     NSMutableString *chargeNumberString = [[NSMutableString alloc] init];
     [chargeNumberString setString:[[NSNumber numberWithDouble:[tempTimeLogged calculateCharges:[rate doubleValue]
@@ -541,21 +536,14 @@
         
         if ([preferences displayForTable:CUPreferencesMenuDisplay column:CUPreferencesMenuDisplayTotalTime])
         {
-            if ([preferences updateTimeEvery] == 0)    [menuTimeDisplay setTitle:[tempMenuTime getTimeString]];
-            if ([preferences updateTimeEvery] == 1)    [menuTimeDisplay setTitle:[tempMenuTime getTimeString:NO]];
-            if ([preferences updateTimeEvery] == 15)   [menuTimeDisplay setTitle:[tempMenuTime getFormattedTimeString:@"quarter"]];
-            if ([preferences updateTimeEvery] == 30)   [menuTimeDisplay setTitle:[tempMenuTime getFormattedTimeString:@"half"]];
-            if ([preferences updateTimeEvery] == 60)   [menuTimeDisplay setTitle:[tempMenuTime getFormattedTimeString:@"hour"]];
+            [menuTimeDisplay setTitle:[tempMenuTime getTimeStringFor:[preferences updateTimeEvery]]];
         }
         if ([preferences displayForTable:CUPreferencesMenuDisplay column:CUPreferencesMenuDisplayCharges])
         {
             NSNumber *rate = [[jobData objectAtIndex:[jobTable selectedRow]] objectForKey:@"hourlyRate"];
                 
-            NSString *formatterString = @"second";
-            if ([preferences updateTimeEvery] == 1)    formatterString = @"minute";
-            if ([preferences updateTimeEvery] == 15)   formatterString = @"quarter";
-            if ([preferences updateTimeEvery] == 30)   formatterString = @"half";
-            if ([preferences updateTimeEvery] == 60)   formatterString = @"hour";
+            NSString *formatterString = [self formatterString];
+            
             
             NSMutableString *chargeNumberString = [[[NSMutableString alloc] init] autorelease];
             [chargeNumberString setString:[[NSNumber numberWithDouble:[tempMenuTime calculateCharges:[rate doubleValue]
@@ -658,7 +646,6 @@
 {
     saveTimer = 0;
     [dataHandler saveJobListToFile:jobData];
-//    [self savePrefs];
 }
 
 
@@ -764,21 +751,14 @@
         
             if ([[tableColumn identifier] isEqualTo:@"jobTimeLogged"])
             {
-                if ([preferences updateTimeEvery] == 0)    theValue = [tempTimeLogged getTimeString];
-                if ([preferences updateTimeEvery] == 1)    theValue = [tempTimeLogged getTimeString:NO];
-                if ([preferences updateTimeEvery] == 15)   theValue = [tempTimeLogged getFormattedTimeString:@"quarter"];
-                if ([preferences updateTimeEvery] == 30)   theValue = [tempTimeLogged getFormattedTimeString:@"half"];
-                if ([preferences updateTimeEvery] == 60)   theValue = [tempTimeLogged getFormattedTimeString:@"hour"];
+                theValue = [tempTimeLogged getTimeStringFor:[preferences updateTimeEvery]];
             }
             else
             {
                 NSNumber *rate = [[jobData objectAtIndex:rowIndex] objectForKey:@"hourlyRate"];
                 
-                NSString *formatterString = @"second";
-                if ([preferences updateTimeEvery] == 1)     formatterString = @"minute";
-                if ([preferences updateTimeEvery] == 15)    formatterString = @"quarter";
-                if ([preferences updateTimeEvery] == 30)    formatterString = @"half";
-                if ([preferences updateTimeEvery] == 60)    formatterString = @"hour";
+                NSString *formatterString = [self formatterString];
+                
                 
                 NSMutableString *chargeNumberString = [[[NSMutableString alloc] init] autorelease];
                 [chargeNumberString setString:[[NSNumber numberWithDouble:[tempTimeLogged calculateCharges:[rate doubleValue]
@@ -832,11 +812,7 @@
             [tempInterval setValues:[[theRow objectForKey:@"startDateTime"] getTimeInterval:[theRow objectForKey:@"endDateTime"]]];
             [tempInterval setValues:[tempInterval subtractInterval:[theRow objectForKey:@"pauseTime"]]];
             
-            NSString *formatterString = @"second";
-            if ([preferences updateTimeEvery] == 1)    formatterString = @"minute";
-            if ([preferences updateTimeEvery] == 15)   formatterString = @"quarter";
-            if ([preferences updateTimeEvery] == 30)   formatterString = @"half";
-            if ([preferences updateTimeEvery] == 60)   formatterString = @"hour";
+            NSString *formatterString = [self formatterString];
             
             if ([[tableColumn identifier] isEqualTo:@"totalTime"])
             {

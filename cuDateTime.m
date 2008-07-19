@@ -105,6 +105,15 @@
 	return tempDateString;
 }
 
+- (NSString *)getTimeStringFor:(int)minutes
+{
+    if( minutes == 1  ) return [self getTimeString:NO];
+    if( minutes == 15 ) return [self getFormattedTimeString:@"quarter"];
+    if( minutes == 30 ) return [self getFormattedTimeString:@"half"];
+    if( minutes == 60 ) return [self getFormattedTimeString:@"hour"];
+    return [self getTimeString];
+}
+
 - (NSString *)getTimeString
 {
 	NSMutableString *tempTimeString = [[[NSMutableString alloc] init] autorelease];
